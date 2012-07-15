@@ -93,6 +93,20 @@ defaults write NSGlobalDomain AppleMetricUnits -bool true
 #defaults write -g WebContinuousSpellCheckingEnabled -bool false
 
 # Disable Dictionary results
+defaults write com.apple.spotlight DictionaryLookupEnabled -bool false
+
+defaults write com.apple.CrashReporter DialogType none
+
+# Enable Resume per application
+defaults write com.apple.Safari NSQuitAlwaysKeepsWindows -bool true
+
+# Disable Dashboard
+defaults write com.apple.dashboard mcx-disabled -bool true
+
+# HelpViewer not always on top
+defaults write com.apple.helpviewer NormalWindow -bool true
+
+
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
