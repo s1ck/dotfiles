@@ -21,6 +21,7 @@ alias gg="git status"
 
 # List all files colorized in long format
 alias l="ls -Gl"
+alias ll="ls -GHl"
 
 # List all files colorized in long format, including dot files
 alias la="ls -Gla"
