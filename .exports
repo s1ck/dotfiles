@@ -16,3 +16,8 @@ export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
 export PATH="$HOME/bin:$PATH:$HOME/.rvm/bin"
 #rmv scripts
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+# For python virtualenv
+export WORKON_HOME="$HOME/.virtualenvs"
+#virtualenv scripts
+source /usr/local/bin/virtualenvwrapper.sh
