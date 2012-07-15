@@ -287,6 +287,9 @@ defaults write com.apple.iTunes invertStoreLinks -bool true
 # Disable the iTunes arrow links completely
 defaults write com.apple.iTunes show-store-arrow-links -bool false
 
+# Hide Ping Dropdown
+defaults write com.apple.iTunes hide-ping-dropdown -bool true
+
 # Disable the Ping sidebar in iTunes
 defaults write com.apple.iTunes disablePingSidebar -bool true
 
