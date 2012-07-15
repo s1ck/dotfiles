@@ -21,3 +21,8 @@ export PATH="$HOME/bin:$PATH:$HOME/.rvm/bin"
 export WORKON_HOME="$HOME/.virtualenvs"
 #virtualenv scripts
 source /usr/local/bin/virtualenvwrapper.sh
+
+#bash compeltion for homebrew
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+	. `brew --prefix`/etc/bash_completion
+fi
