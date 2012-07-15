@@ -17,6 +17,7 @@ alias m="mate ."
 alias s="subl ."
 alias o="open"
 alias oo="open ."
+alias gg="git status"
 
 # List all files colorized in long format
 alias l="ls -Gl"
