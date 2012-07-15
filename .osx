@@ -92,6 +92,7 @@ defaults write NSGlobalDomain AppleMetricUnits -bool true
 #defaults write -g WebAutomaticTextReplacementEnabled -bool false
 #defaults write -g WebContinuousSpellCheckingEnabled -bool false
 
+# Disable Dictionary results
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
