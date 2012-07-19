@@ -44,7 +44,7 @@ alias mplayer="mplayer -vo gl_nosw -autosync 30 -vf screenshot -lavdopts threads
 alias sudo='sudo '
 
 # Get OS X Software Updates, update Homebrew itself, and upgrade installed Homebrew packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade'
+alias update='sudo softwareupdate -i -a; sudo chown $USER:admin /usr/local/*; brew update; brew upgrade'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
