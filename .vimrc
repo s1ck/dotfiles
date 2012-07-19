@@ -98,6 +98,8 @@ if has("autocmd")
 	filetype on
 	" Treat .json files as .js
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+	" In text files, always limit the width of text to 78 characters
+	autocmd BufRead *.txt set tw=78
 	augroup cursor
 	autocmd!
 	" When editing a file, always jump to the last cursor position
