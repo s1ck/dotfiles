@@ -100,6 +100,8 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 	" In text files, always limit the width of text to 78 characters
 	autocmd BufRead *.txt set tw=78
+	" don't write swapfile on most commonly used directories for mounts
+	autocmd BufNewFile,BufReadPre /media/*,/mnt/*,/Volumes/* set directory=~/tmp,/var/tmp,/tmp
 	augroup cursor
 	autocmd!
 	" When editing a file, always jump to the last cursor position
