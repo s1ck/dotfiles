@@ -19,6 +19,12 @@ let mapleader=","
 " Don’t add empty newlines at the end of files
 set binary
 set noeol
+" Set auto indentation
+set autoindent
+" Indent by 4 Spaces and not by Tab
+set expandtab
+set shiftwidth=4
+set softtabstop=4
 " read/write a ~/.viminfo file, don't store more
 " than 20 files and 50 lines/commands per file
 set viminfo='20,\"50,:50,%,n~/.viminfo
