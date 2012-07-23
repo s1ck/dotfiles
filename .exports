@@ -23,6 +23,6 @@ export WORKON_HOME="$HOME/.virtualenvs"
 source /usr/local/bin/virtualenvwrapper.sh
 
 #bash compeltion for homebrew
-if [ -f `brew --prefix`/etc/bash_completion ]; then
+if [ -x brew ] && [ -f `brew --prefix`/etc/bash_completion ]; then
 	. `brew --prefix`/etc/bash_completion
 fi
