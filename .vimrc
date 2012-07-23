@@ -25,9 +25,9 @@ set autoindent
 set expandtab
 set shiftwidth=4
 set softtabstop=4
-" read/write a ~/.viminfo file, don't store more
+" read/write a viminfo file, don't store more
 " than 20 files and 50 lines/commands per file
-set viminfo='20,\"50,:50,%,n~/.viminfo
+set viminfo='20,\"50,:50,%,n~/.vim/info
 " keep 50 lines of command line history
 set history=50
 " Centralize backups, swapfiles and undo history
