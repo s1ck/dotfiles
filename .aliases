@@ -19,7 +19,7 @@ alias j="jq '.'"
 alias sc="scala"
 alias op="openport"
 alias gg="git status -sb"
-alias gc='EDITOR vi git commit'
+alias gc='EDITOR=vi git commit'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
