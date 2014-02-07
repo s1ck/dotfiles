@@ -1,0 +1,63 @@
+#!/usr/bin/env python
+from __future__ import print_function
+
+from datetime import date
+from sys import argv
+
+
+today = date.today()
+
+target = {
+  'year': today.year,
+  'month': today.month,
+  'day': today.day,
+}
+keys = ['day', 'month', 'year']
+
+def ins(key, val):
+  target[key] = int(val)
+  keys.remove(key)
+
+def dt(date):
+  return date.strftime('%A, %B {0}, %Y').format(date.strftime('%d').lstrip('0'))
+
+def _wrap_with(code):
+  def inner(text):
+    return "\033[%sm%s\033[0m" % (code, text)
+  return inner
+
+red = _wrap_with('31')
+green = _wrap_with('32')
+yellow = _wrap_with('33')
+blue = _wrap_with('34')
+magenta = _wrap_with('35')
+cyan = _wrap_with('36')
+white = _wrap_with('37')
+
+def main():
+  for idx, arg in enumerate(argv[1:4]):
+    if len(arg) is 4 and 'year' in keys:
+      ins('year', arg)
+    if len(arg) is 3 and arg.startswith('0') and 'month' in keys:
+      ins('month', arg.lstrip('0'))
+    elif 'day' in keys:
+      ins('day', arg)
+    elif 'month' in keys:
+      ins('month', arg)
+    elif 'year' in keys:
+      ins('year', arg)
+
+  global target, today
+
+  target = date(**target)
+  if target < today:
+    today, target = target, today
+
+  print("There are {0} days between {1} and {2}".format(
+      green(abs(target - today).days),
+      cyan(dt(today)),
+      yellow(dt(target))
+  ))
+
+if __name__ == "__main__":
+  main()

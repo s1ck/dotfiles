@@ -1,0 +1,17 @@
+#!/usr/bin/env python
+
+import envoy
+import sys
+
+package = sys.argv[1]
+
+def leaves():
+    return set(envoy.run("brew leaves").std_out.strip().split('\n'))
+
+deps = set(envoy.run("brew deps " + package).std_out.strip().split('\n'))
+
+dangling = deps & leaves()
+while dangling:
+    for line in (envoy.run("brew uninstall " + p).std_out for p in dangling):
+        print line
+    dangling = deps & leaves()

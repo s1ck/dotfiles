@@ -1,0 +1,131 @@
+#!/usr/bin/env python
+
+import argparse
+import os
+import subprocess
+import sys
+
+choices = {
+    'elasticsearch': {
+        'start': ("elasticsearch -f -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml", "elasticsearch -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml"),
+        'stop': ("curl -XPOST localhost:9200/_shutdown",),
+        'env': {
+            'ES_HEAP_SIZE': '4G'
+        }
+    },
+    'redis': {
+        'start': ("redis-server /usr/local/etc/redis.conf",
+                  "redis-server /usr/local/etc/redis.conf --daemonize yes"),
+        'stop': ("redis-cli shutdown",)
+    },
+    'mongodb': {
+        'start': ("mongod", "mongod --fork"),
+        'stop': ("mongo admin --eval 'db.shutdownServer()'",)
+    },
+    'mysql': {
+        'start': ("mysql.server start", "mysql.server start"),
+        'stop': ("mysql.server stop",)
+    }
+}
+
+for k in choices:
+    choices[k]['restart'] = (choices[k]['stop'][0] + ' ; ' + choices[k]['start'][0], choices[k]['stop'][0] + ' ; ' + choices[k]['start'][1])
+
+
+def get_arguments(args=None):
+    parser = argparse.ArgumentParser()
+    parser.add_argument('what', nargs='+', help="select from " +
+                                     ', '.join(choices.keys()))
+    parser.add_argument('-s', '--stop', dest='action',
+                        action='store_const',
+                        const='stop', default='start')
+    parser.add_argument('-r', '--restart', dest='action',
+                        action='store_const',
+                        const='restart', default='start')
+    parser.add_argument('-f', '--foreground', '--follow',
+                        dest='bg', action='store_const',
+                        const=0, default=-1)
+
+    arguments = parser.parse_args(args)
+
+    def ret(retval):
+        return retval, arguments.action, arguments.bg
+
+    if arguments.what == ['all']:
+        return ret(set(choices) - {'mysql'})
+
+    possibilities = set()
+
+    def contains(what, test, cont):
+        possible = set()
+        for choice in choices:
+            if test(what, choice):
+                possible.add(choice)
+
+        return cont(possible)
+
+    def resolve_ambiguity(possible):
+        if not possible:
+            return None
+
+        possible = possible - possibilities
+
+        if len(possible) > 1:
+            parser.error("your choice %s is ambiguous, possible results: %s" %
+                         (what, ', '.join(possible)))
+            return None
+
+        return possible.pop()
+
+    for what in arguments.what:
+
+        if what in choices:
+            possibilities.add(what)
+            continue
+
+        possible = contains(what, lambda w, c: c.startswith(w), resolve_ambiguity)
+        if possible is None:
+            possible = contains(what, lambda w, c: set(w) <= set(c),
+                                resolve_ambiguity)
+
+        if possible is None:
+            parser.print_help()
+            parser.exit()
+
+        possibilities.add(possible)
+
+    return ret(possibilities)
+
+
+def main(args=None):
+    whats, action, bg = get_arguments(args)
+    devnull = open('/dev/null', 'w+')
+
+    msg = "{}ing {{}}".format(action)
+    if action == 'start':
+        if len(whats) > 1 and not bg:
+            print "starting multiple servers in foreground doesn't make sense"
+            sys.exit(-1)
+        msg += " in {}".format('background' if bg else 'foreground')
+
+    for what in whats:
+        print msg.format(what)
+        command = choices[what][action][bg]
+        env = os.environ
+        if 'env' in choices[what]:
+            env.update(choices[what]['env'])
+
+        args = (command,)
+        kwargs = dict(shell=True, env=env)
+        if bg:
+            kwargs['stdout'] = devnull
+            kwargs['stderr'] = devnull
+
+        p = subprocess.Popen(*args, **kwargs)
+        if not bg:
+            p.communicate()
+        print ""
+
+
+if __name__ == '__main__':
+    main()

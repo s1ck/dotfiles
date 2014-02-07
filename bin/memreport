@@ -1,0 +1,54 @@
+#!/usr/bin/env python
+#encoding: utf8
+
+import subprocess
+import re
+from collections import Counter
+
+KI = 1024
+MI = 1024 * 1024
+PAGESIZE = 4096
+LINELEN = 28
+
+ps = subprocess.check_output(['ps', '-caxm', '-orss,comm'])
+vm = subprocess.check_output(['vm_stat'])
+
+
+procs = Counter()
+real_memory = 0
+
+for proc in ps.split('\n'):
+    try:
+        mem, proc = proc.strip().split(None, 1)
+        mem = int( mem )
+    except ValueError:
+        continue
+
+    real_memory += (mem * KI)
+    procs.update( Counter( { proc: mem } ) )
+
+vm_stats = {}
+for vm in vm.split('\n'):
+    try:
+        proc, mem = vm.split(':')
+        vm_stats[proc.strip()] = int( float( mem ) ) * PAGESIZE
+    except ValueError:
+        continue
+
+def print_out(key, value, prec='d'):
+    print '{:<}{:>{width}{prec}} M'.format(
+        key[:LINELEN] + (key[LINELEN:] and '…'),
+        value,
+        width=max( 0, LINELEN - len( key ) ),
+        prec=prec
+    )
+
+print_out( 'Wired', vm_stats["Pages wired down"] / MI )
+print_out( 'Active', vm_stats["Pages active"] / MI )
+print_out( 'Inactive', vm_stats["Pages inactive"] / MI )
+print_out( 'Free', vm_stats["Pages free"] / MI )
+print_out( 'Total', float(real_memory) / MI, prec='.0f' )
+print ''
+print 'Top 5 Processes:'
+for proc, mem in procs.most_common(5):
+    print_out( proc, float(mem) / KI, prec='.0f' )
