@@ -3,6 +3,11 @@ function md() {
 	mkdir -p "$@" && cd "$@"
 }
 
+# up a couple of dirs. preserves $OLDPWD
+function up {
+	cd $(eval printf '../'%.0s {1..$1}) && pwd
+}
+
 # Use Git’s colored diff when available
 hash git &>/dev/null
 if [ $? -eq 0 ]; then
@@ -39,6 +44,14 @@ function gz() {
 	gzip -c "$1" | wc -c
 }
 
+# Get gzipped file size in kilobytes
+function gzk() {
+	echo "orig size (kilobytes): "
+	cat "$1" | wc -c| awk '{print $0, "/ 1024"}' | bc
+	echo "gzipped size (kilobytes): "
+	gzip -c "$1" | wc -c | awk '{print $0, "/ 1024"}' | bc
+}
+
 # Test if HTTP compression (RFC 2616 + SDCH) is enabled for a given URL.
 # Send a fake UA string for sites that sniff it instead of using the Accept-Encoding header. (Looking at you, ajax.googleapis.com!)
 function httpcompression() {
@@ -50,6 +63,11 @@ function gurl() {
 	curl -sH "Accept-Encoding: gzip" "$@" | gunzip
 }
 
+#sniff short-urls
+function longurl() {
+	curl --silent --location --head "$1" | grep -E "^Location: " | tail -n 1 | awk -F': ' '{print $2}'
+}
+
 # Syntax-highlight JSON strings or files
 function json() {
 	if [ -p /dev/stdin ]; then
@@ -59,6 +77,11 @@ function json() {
 		# e.g. `json '{"foo":42}'`
 		python -mjson.tool <<< "$*" | pygmentize -l javascript
 	fi
+}
+
+# ES friendly curl
+function elastic() {
+	curl -s "$@" | json
 }
 
 # All the dig info
@@ -92,6 +115,12 @@ function killport() {
 	# This would kill everything, also connected clients
     # lsof -i :$port -Fp | cut -dp -f2 | xargs kill $@
 }
+
+# open URL in new Chrome w/o Chrome UI
+function google-chrome-app() {
+	"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --user-data-dir=/Users/knut/tmp/chrometmp --app="$1"
+}
+
 # list available JDKs
 function jls() {
   echo "Use ´j6, j7 and j8´ to conventiently switch between Java versions."
