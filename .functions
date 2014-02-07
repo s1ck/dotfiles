@@ -16,10 +16,16 @@ dataurl() {
 	echo "data:image/${1##*.};base64,$(openssl base64 -in "$1")" | tr -d '\n'
 }
 
+# Open a given port on localhost in the browser
+function openport() {
+	local port="${1:-8000}"
+	open "http://localhost:${port}/"
+}
+
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
 	local port="${1:-8000}"
-	open "http://localhost:${port}/"
+	openport $port
 	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
 	# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
 	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
@@ -76,6 +82,15 @@ function unidecode() {
 function codepoint() {
 	perl -e "use utf8; print sprintf('U+%04X', ord(\"$@\"))"
 	echo # newline
+}
+
+# kill whatever is LISTENing an a given port, e.g. killport 9200. (killport 9200 -9 if you want to be ugly)
+function killport() {
+	local port=$1
+	shift 1
+    lsof -i :$port | grep LISTEN | awk '{print $2}' | xargs kill $@
+	# This would kill everything, also connected clients
+    # lsof -i :$port -Fp | cut -dp -f2 | xargs kill $@
 }
 # list available JDKs
 function jls() {

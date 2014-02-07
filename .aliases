@@ -20,6 +20,7 @@ alias s="subl3 ."
 alias sc="scala"
 alias o="open"
 alias oo="open ."
+alias op="openport"
 alias gg="git status -sb"
 
 # List all files colorized in long format
