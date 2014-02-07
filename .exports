@@ -12,10 +12,19 @@ export HISTCONTROL=ignoredups
 # Make some commands not show up in history
 export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
 
+# export JAVA_HOME
+if [ -x /usr/libexec/java_home ]; then
+	export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+fi
+export SCALA_HOME=/usr/local/Library/LinkedKegs/scala/libexec
+
 # enable ~/bin directory and rvm scripts
 export PATH="$HOME/bin:$PATH:$HOME/.rvm/bin"
 #rmv scripts
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+#Android
+export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
 
 # For python virtualenv
 export WORKON_HOME="$HOME/.virtualenvs"

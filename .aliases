@@ -17,6 +17,7 @@ alias j="jq '.'"
 alias v="vim"
 alias m="mate ."
 alias s="subl3 ."
+alias sc="scala"
 alias o="open"
 alias oo="open ."
 alias gg="git status"
@@ -114,4 +115,10 @@ alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 7'"
 alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 alias git='/usr/local/bin/git'
+
+# quick switch java version
+# http://torkild.resheim.no/2013/09/easily-switching-java-versions-on-os-x.html
+alias j6='ju 1.6'
+alias j7='ju 1.7'
+alias j8='ju 1.8'
 
