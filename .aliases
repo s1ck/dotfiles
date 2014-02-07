@@ -20,14 +20,14 @@ alias s="subl3 ."
 alias sc="scala"
 alias o="open"
 alias oo="open ."
-alias gg="git status"
+alias gg="git status -sb"
 
 # List all files colorized in long format
-alias l="ls -Gl"
-alias ll="ls -Ghl"
+alias l="ls -GFl"
+alias ll="ls -GFhl"
 
 # List all files colorized in long format, including dot files
-alias la="ls -Gla"
+alias la="ls -GFla"
 
 # List only directories
 alias lsd='ls -l | grep "^d"'
@@ -40,18 +40,15 @@ else
 	export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
 fi
 
-#mplayer defaults
-alias mplayer="mplayer -vo gl_nosw -autosync 30 -vf screenshot -lavdopts threads=8"
-
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
 # Get OS X Software Updates, update Homebrew itself, and upgrade installed Homebrew packages
-alias update='sudo softwareupdate -i -a; sudo chown $USER:admin /usr/local/*; brew update; brew upgrade'
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade'
 
 # IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en1"
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
 
 # Enhanced WHOIS lookups
@@ -59,10 +56,11 @@ alias whois="whois -h whois-servers.net"
 
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache"
+alias flush-launchservices="/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user"
 
 # View HTTP traffic
-alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # Canonical hex dump; some systems have this symlinked
 type -t hd > /dev/null || alias hd="hexdump -C"
@@ -110,15 +108,37 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 	alias "$method"="lwp-request -m '$method'"
 done
 
+# profile HTTP request with cURL
+alias profile_http='curl -s -o /dev/null -w "Code\tTime\tConnect\tPre\tStart\tHeader\tDownloaded\n%{http_code}\t%{time_total}\t%{time_connect}\t%{time_pretransfer}\t%{time_starttransfer}\t%{size_header}\t%{size_download}\n"'
+
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
 alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 7'"
 alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
+
+# default options for some binaries
+alias mplayer="mplayer -vo gl_nosw -autosync 30 -vf screenshot -lavdopts threads=8"
 alias git='/usr/local/bin/git'
+alias node='NODE_NO_READLINE=1 rlwrap -pgreen node'
+alias ip='/usr/local/Cellar/python/2.7.6/bin/python /usr/local/bin/ipython'
+alias ipylab='ipython --pylab'
+alias ipynb='ipython notebook --pylab=inline'
+alias htop='sudo htop'
+alias purge='sudo purge'
+
+# other stuff
+alias install_distribute='curl "http://python-distribute.org/distribute_setup.py" | python'
+alias fixappletvaudio='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
+
+# Android Remote Debbuging, see https://developers.google.com/chrome/mobile/docs/debugging
+alias mobile-debugging='adb forward tcp:9222 localabstract:chrome_devtools_remote'
 
 # quick switch java version
 # http://torkild.resheim.no/2013/09/easily-switching-java-versions-on-os-x.html
 alias j6='ju 1.6'
 alias j7='ju 1.7'
 alias j8='ju 1.8'
+
+# move with rsync, use rmove -z /a /b to enable gzip for full speedup when downloading text files from servers
+alias rmove="rsync --remove-source-files -Phav"
 
