@@ -38,6 +38,6 @@ source /usr/local/bin/virtualenvwrapper_lazy.sh
 #source /usr/local/bin/virtualenvwrapper.sh
 
 #bash compeltion for homebrew
-if [ -f `brew --prefix`/etc/bash_completion ]; then
+if [ -x brew ] && [ -f `brew --prefix`/etc/bash_completion ]; then
 	. `brew --prefix`/etc/bash_completion
 fi
