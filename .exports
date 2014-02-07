@@ -12,7 +12,7 @@ export HISTCONTROL=ignoredups
 # log timestamps in history
 export HISTTIMEFORMAT="%F %T "
 # Make some commands not show up in history
-export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
+export HISTIGNORE="ll:ls:..:cd:cd -:pwd;exit:date:* --help"
 
 # export JAVA_HOME
 if [ -x /usr/libexec/java_home ]; then
@@ -21,17 +21,21 @@ fi
 export SCALA_HOME=/usr/local/Library/LinkedKegs/scala/libexec
 
 # enable ~/bin directory and rvm scripts
-export PATH="$HOME/bin:$PATH:$HOME/.rvm/bin"
+export PATH="$HOME/bin:/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:$HOME/.rvm/bin:$PATH"
 #rmv scripts
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 #Android
 export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
 
+# Node
+export NODE_PATH=/usr/local/lib/node_module:/usr/local/share/npm/lib/node_modules
+
 # For python virtualenv
 export WORKON_HOME="$HOME/.virtualenvs"
 #virtualenv scripts
-source /usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper_lazy.sh
+#source /usr/local/bin/virtualenvwrapper.sh
 
 #bash compeltion for homebrew
 if [ -f `brew --prefix`/etc/bash_completion ]; then
