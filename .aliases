@@ -164,7 +164,7 @@ alias node='NODE_NO_READLINE=1 rlwrap -pgreen node'
 alias ip='/usr/local/Cellar/python/2.7.6/bin/python /usr/local/bin/ipython'
 alias ipylab='ipython --pylab'
 alias ipynb='ipython notebook --pylab=inline'
-alias htop='sudo htop'
+alias htop='sudo htop -d 10'
 alias purge='sudo purge'
 alias install_distribute='curl "http://python-distribute.org/distribute_setup.py" | python'
 
