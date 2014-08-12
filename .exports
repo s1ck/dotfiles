@@ -8,7 +8,7 @@ export HISTCONTROL=ignoredups
 # log timestamps in history
 export HISTTIMEFORMAT="%F %T "
 # Make some commands not show up in history
-export HISTIGNORE="ll:ls:..:cd:cd -:pwd:gg:exit:date:* --help"
+export HISTIGNORE="ll:ls:..:cd:cd -:gg:pwd:exit:trifecta*:date:* --help"
 
 # Prefer US English and use UTF-8
 export LANG="en_US"
@@ -28,7 +28,7 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # export JAVA_HOME
 if [ -x /usr/libexec/java_home ]; then
-	export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+	export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 fi
 export SCALA_HOME=/usr/local/Library/LinkedKegs/scala/libexec
 
@@ -44,8 +44,11 @@ export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
 export NODE_PATH=/usr/local/lib/node_module:/usr/local/share/npm/lib/node_modules
 
 # For python virtualenv
-export WORKON_HOME="$HOME/.virtualenvs"
+#if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+#export WORKON_HOME="$HOME/.virtualenvs"
 #virtualenv scripts
-source /usr/local/bin/virtualenvwrapper_lazy.sh
-#source /usr/local/bin/virtualenvwrapper.sh
+#if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
+# Shell Bookmarks
+# http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
+export MARKPATH=$HOME/.marks

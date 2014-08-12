@@ -358,7 +358,7 @@ function tre() {
 function jls() {
   echo "Use ´j6, j7 and j8´ to conventiently switch between Java versions."
   echo "For a specific version use ´ju <version>´ where available versions are listed below:"
-  /usr/libexec/java_home -V 2>&1 | grep -P "\d.\d.\d" | cut -d , -f 1 | colrm 1 4 | grep -v Home
+  /usr/libexec/java_home -V 2>&1 | grep '\d\.\d\.\d' | cut -d , -f 1 | colrm 1 4 | grep -v Home
 }
 
 # quickswitch a JDK
@@ -366,4 +366,22 @@ function ju() {
   export JAVA_HOME=$(/usr/libexec/java_home -v $1)
   export PATH=$JAVA_HOME/bin:$PATH
   java -version
+}
+
+# Shell Bookmarks
+# http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
+function jump { 
+  cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
+}
+
+function mark { 
+  mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
+}
+
+function unmark { 
+  rm -i "$MARKPATH/$1"
+}
+
+function marks {
+  \ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
 }

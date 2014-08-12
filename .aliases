@@ -15,6 +15,7 @@ alias p="cd ~/Development/Projects"
 alias g="git"
 alias gut="git"
 alias got="git"
+alias gir="git"
 alias h="history"
 alias j="jq '.'"
 alias sc="scala"
@@ -45,6 +46,7 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
+alias such=' '
 
 # Gzip-enabled `curl`
 alias gurl='curl --compressed'
@@ -196,3 +198,9 @@ alias j8='ju 1.8'
 
 # move with rsync, use rmove -z /a /b to enable gzip for full speedup when downloading text files from servers
 alias rmove="rsync --remove-source-files -Phav"
+alias rcopy="rsync -Phav"
+
+# XCode Utilities
+alias instruments.app='open /Applications/Xcode.app/Contents/Applications/Instruments.app'
+alias iphone_simulator='open /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app'
+
