@@ -10,7 +10,8 @@ alias -- -="cd -"
 alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias p="cd ~/Projects"
+alias dev="cd ~/Development"
+alias p="cd ~/Development/Projects"
 alias g="git"
 alias gut="git"
 alias got="git"
@@ -77,6 +78,10 @@ alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/La
 alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
+# do a TCP port check
+alias port="nc -vz 127.0.0.1"
+alias portcheck="nc -vz"
+
 # Canonical hex dump; some systems have this symlinked
 command -v hd > /dev/null || alias hd="hexdump -C"
 
@@ -85,6 +90,9 @@ command -v md5sum > /dev/null || alias md5sum="md5"
 
 # OS X has no `sha1sum`, so use `shasum` as a fallback
 command -v sha1sum > /dev/null || alias sha1sum="shasum"
+
+# Download YouTube Video
+alias y='cd ~/Movies/YouTube; youtube-dl -c'
 
 # JavaScriptCore REPL
 jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc"

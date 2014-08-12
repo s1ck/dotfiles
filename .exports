@@ -8,7 +8,7 @@ export HISTCONTROL=ignoredups
 # log timestamps in history
 export HISTTIMEFORMAT="%F %T "
 # Make some commands not show up in history
-export HISTIGNORE="ll:ls:..:cd:cd -:pwd;exit:date:* --help"
+export HISTIGNORE="ll:ls:..:cd:cd -:pwd:gg:exit:date:* --help"
 
 # Prefer US English and use UTF-8
 export LANG="en_US"
