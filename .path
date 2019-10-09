@@ -1,0 +1,14 @@
+# Add sublime text binary
+SUBLIMEPATH="/Applications/Sublime Text 3.app/Contents/SharedSupport";
+PATH=$SUBLIMEPATH/bin:$PATH;
+
+# Add brew directories
+PATH="/usr/local/bin:/usr/local/sbin:$PATH";
+
+# Add cargo binaries
+PATH="$HOME/.cargo/bin:$PATH";
+
+# Add ~/bin
+PATH="$HOME/bin:$PATH";
+
+export PATH;
