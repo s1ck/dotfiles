@@ -53,6 +53,9 @@
 	# Amend the currently staged files to the latest commit
 	amend = commit --amend --reuse-message=HEAD
 
+	# Create a new commit with all changes and the same message as the last commit
+	again = commit -a --reuse-message=HEAD
+
 	# Prepare fixup for interactive rebase (fu = fix-up)
 	# Call with the commit-ish hash that is the commit to be fixed
 	fu = commit --fixup
