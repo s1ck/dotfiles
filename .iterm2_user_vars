@@ -1,5 +1,5 @@
 function iterm2_print_user_vars() {
-  iterm2_set_user_var javaVersion $(greadlink -f $JAVA_HOME | xargs gbasename)
+  iterm2_set_user_var javaVersion $(if [ -z "$JAVA_HOME" ]; then echo 🚫; else greadlink -f ${JAVA_HOME} | xargs basename; fi)
   iterm2_set_user_var rustVersion $(rustc --version | cut -d' ' -f2)
   iterm2_set_user_var currentDir $(pwd | xargs gbasename)
 }
