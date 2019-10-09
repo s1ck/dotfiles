@@ -2,6 +2,10 @@
 SUBLIMEPATH="/Applications/Sublime Text 3.app/Contents/SharedSupport";
 PATH=$SUBLIMEPATH/bin:$PATH;
 
+# Add Visual Studio Code binary
+VSCODEPATH="/Applications/Visual Studio Code.app/Contents/Resources/app";
+PATH=$VSCODEPATH/bin:$PATH;
+
 # Add brew directories
 PATH="/usr/local/bin:/usr/local/sbin:$PATH";
 
