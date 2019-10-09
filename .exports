@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Make Sublime Text the default editor.
-export EDITOR='subl -w';
+export EDITOR='code -w';
 
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8';
