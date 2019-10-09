@@ -9,32 +9,54 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias p="cd ~/projects"
+alias p="cd ~/dev"
 alias g="git"
+alias h="history"
+alias j="jq '.'"
+alias w='workon'
+alias jj="jq -C '.' | less -R"
+alias op="openport"
+alias od="opendocker"
+alias gg="git status -sb"
+alias gs="git status -s"
+alias gc='EDITOR=vi git commit'
+alias vi='vim'
 
-# Detect which `ls` flavor is in use
-if ls --color > /dev/null 2>&1; then # GNU `ls`
-	colorflag="--color"
-	export LS_COLORS='no=00:fi=00:di=01;31:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
-else # macOS `ls`
-	colorflag="-G"
-	export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
-fi
+# Typos
+alias whoch='which'
+alias gut="git"
+alias got="git"
+alias gir="git"
 
-# List all files colorized in long format
-alias l="ls -lF ${colorflag}"
+# Replacements
+# Inspured by https://remysharp.com/2018/08/23/cli-improved
 
-# List all files colorized in long format, excluding . and ..
-alias la="ls -lAF ${colorflag}"
+## ls -> lsd
+## https://github.com/Peltoche/lsd
 
-# List only directories
-alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+alias ls='lsd'
 
-# Always use color output for `ls`
-alias ls="command ls ${colorflag}"
+### List all files colorized in long format
+alias l="lsd -Fl"
+alias ll="lsd -Fhl"
+
+### List all files colorized in long format, excluding . and ..
+alias la="lsd -Fla"
+
+### List only directories
+alias lsdir="lsd -lF ${colorflag} | grep --color=never '^d'"
+
+## cat -> bat
+## https://github.com/sharkdp/bat
+alias cat='bat'
+alias ogcat='command cat'
+
+## ping -> prettyping
+## https://github.com/denilsonsa/prettyping
+alias ping='prettyping'
+
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
@@ -42,26 +64,47 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+# Skip dns and services lookup for lsof
+alias lsof='lsof -nP'
+
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
+
+# Doge mode (`such git`)
+alias such=' '
+
+# Longer timeout with HTTPie
+alias http='http --timeout 300'
+
+# Verbose http
+alias httpv='http -pHhBb'
 
 # Get week number
 alias week='date +%V'
 
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
+alias update='brew update; brew upgrade; brew cleanup;'
+alias brupdate='update'
 
 # Google Chrome
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
 
 # IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # Show active network interfaces
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
+
+# View HTTP traffic
+alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+# Do a TCP port check
+alias port="nc -vz 127.0.0.1"
+alias portcheck="nc -vz"
 
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
@@ -84,10 +127,10 @@ jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources
 unset jscbin;
 
 # Trim new lines and copy to clipboard
-alias c="tr -d '\n' | pbcopy"
+alias ctrlc="tr -d '\n' | pbcopy"
 
 # Recursively delete `.DS_Store` files
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+alias cleanup="find . \( \( -type d -name target \) -or \( -type d -name build \) -or \( -type d -name node_modules \) -or \( -type f -name '*.DS_Store' \) \) -exec rm -r {} \;"
 
 # Empty the Trash on all mounted volumes and the main HDD.
 # Also, clear Apple’s System Logs to improve shell startup speed.
@@ -141,8 +184,44 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
+# default options for some binaries
+[ -x /usr/local/bin/git ] && alias git='/usr/local/bin/git'
+alias htop='sudo htop -d 10'
+
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# JVM switching
+alias j6='sdk offline enable > /dev/null && sdk use java 6 > /dev/null && sdk offline disable > /dev/null && java -version'
+alias j7='sdk offline enable > /dev/null && sdk use java 7 > /dev/null && sdk offline disable > /dev/null && java -version'
+alias j8='sdk offline enable > /dev/null && sdk use java 8 > /dev/null && sdk offline disable > /dev/null && java -version'
+alias j9='sdk offline enable > /dev/null && sdk use java 9 > /dev/null && sdk offline disable > /dev/null && java -version'
+alias j10='sdk offline enable > /dev/null && sdk use java 10 > /dev/null && sdk offline disable > /dev/null && java -version'
+alias j11='sdk offline enable > /dev/null && sdk use java 11 > /dev/null && sdk offline disable > /dev/null && java -version'
+alias j12='sdk offline enable > /dev/null && sdk use java 12 > /dev/null && sdk offline disable > /dev/null && java -version'
+alias j13='sdk offline enable > /dev/null && sdk use java 13 > /dev/null && sdk offline disable > /dev/null && java -version'
+alias j14='sdk offline enable > /dev/null && sdk use java 14 > /dev/null && sdk offline disable > /dev/null && java -version'
+alias j15='sdk offline enable > /dev/null && sdk use java 15 > /dev/null && sdk offline disable > /dev/null && java -version'
+alias j16='sdk offline enable > /dev/null && sdk use java 16 > /dev/null && sdk offline disable > /dev/null && java -version'
+alias j17='sdk offline enable > /dev/null && sdk use java 17 > /dev/null && sdk offline disable > /dev/null && java -version'
+alias j18='sdk offline enable > /dev/null && sdk use java 18 > /dev/null && sdk offline disable > /dev/null && java -version'
+alias j19='sdk offline enable > /dev/null && sdk use java 19 > /dev/null && sdk offline disable > /dev/null && java -version'
+alias j20='sdk offline enable > /dev/null && sdk use java 20 > /dev/null && sdk offline disable > /dev/null && java -version'
+alias jg='sdk offline enable > /dev/null && sdk use java graal > /dev/null && sdk offline disable > /dev/null && java -version'
+
+
+# move with rsync, use rmove -z /a /b to enable gzip for full speedup when downloading text files from servers
+alias rmove="rsync --remove-source-files -Phav  --exclude .git --exclude .idea"
+alias rmove-all="rsync --remove-source-files -Phav"
+alias rcopy="rsync -Phav --exclude .git --exclude .idea"
+alias rcopy-all="rsync -Phav"
+
+# clean up cached ssh connections
+alias ssh_unshare="ps ax | grep ssh | grep ssh_persist | grep -v grep |  awk '{print \$1}' | xargs -r kill"
+
+# stats infos
+alias hot='istats cpu temp'
+alias fast='istats fan speed'

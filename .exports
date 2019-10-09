@@ -1,14 +1,7 @@
 #!/usr/bin/env bash
 
-# Make vim the default editor.
-export EDITOR='vim';
-
-# Enable persistent REPL history for `node`.
-export NODE_REPL_HISTORY=~/.node_history;
-# Allow 32³ entries; the default is 1000.
-export NODE_REPL_HISTORY_SIZE='32768';
-# Use sloppy mode by default, matching web browsers.
-export NODE_REPL_MODE='sloppy';
+# Make Sublime Text the default editor.
+export EDITOR='subl -w';
 
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8';
@@ -18,6 +11,11 @@ export HISTSIZE='32768';
 export HISTFILESIZE="${HISTSIZE}";
 # Omit duplicates and commands that begin with a space from history.
 export HISTCONTROL='ignoreboth';
+
+# log timestamps in history
+export HISTTIMEFORMAT="%F %T "
+# Make some commands not show up in history
+export HISTIGNORE="ll:ls:..:cd:cd -:gg:pwd:exit:date"
 
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8';
@@ -29,6 +27,32 @@ export LESS_TERMCAP_md="${yellow}";
 # Don’t clear the screen after quitting a manual page.
 export MANPAGER='less -X';
 
+# Opt-out of Homebrew analytics
+export HOMEBREW_NO_ANALYTICS=1
+
 # Avoid issues with `gpg` as installed via Homebrew.
 # https://stackoverflow.com/a/42265848/96656
-export GPG_TTY=$(tty);
+# export GPG_TTY=$(tty);
+
+# Shell Bookmarks
+# http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
+export MARKPATH=$HOME/.marks
+
+# http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
+# Use RipGrep for better search
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,target}/*" 2> /dev/null'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="bfs -type d -nohidden"
+bind -x '"\C-x\C-p": vim $(fzf);'
+
+# fw: https://github.com/brocode/fw/blob/b797b3c51e1400400b2d9b5c2b602b7c733e4f5b/doc/installation.org
+if [[ -x "$(command -v fw)" ]]; then
+  if [[ -x "$(command -v fzf)" ]]; then
+    eval "$(fw print-bash-setup -f 2>/dev/null)"
+  else
+    eval "$(fw print-bash-setup 2>/dev/null)"
+  fi
+fi
+
+# SDKMAN
+export SDKMAN_DIR="${HOME}/.sdkman"

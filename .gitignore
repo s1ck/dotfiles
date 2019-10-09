@@ -1,5 +1,50 @@
-# Compiled Python files
+# See http://help.github.com/ignore-files/ for more about
+# ignoring files.
+#
+# If you find yourself ignoring temporary files generated
+# by your text editor or operating system, you probably
+# want to add a global ignore instead:
+#   git config --global core.excludesfile ~/.gitignore_global
+#
+# NOTE! Please use 'git ls-files -i --exclude-standard'
+# command after changing this file, to see if there are
+# any tracked files which get ignored after the change.
+#
+#
+
+# completly ignore dotfiles
+.*
+
+# Numerous always-ignore extensions
+*.gz
+*.bz2
+*.lzma
+*.patch
 *.pyc
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.vi
+*~
+*.sass-cache
+
+# Editor files
+.cache
+.project
+.settings
+.tmproj
+nbproject
+*.sublime-project
+*.sublime-workspace
+External Libraries
+*.iml
+*.ipr
+*.iws
+atlassian-ide-plugin.xml
 
 # Folder view configuration files
 .DS_Store
@@ -12,3 +57,19 @@ Thumbs.db
 # Files that might appear on external disks
 .Spotlight-V100
 .Trashes
+
+# Dreamweaver added files
+_notes
+dwsync.xml
+
+# Folders to ignore
+.hg
+.svn
+.CVS
+
+#
+# git files that we don't want to ignore even it they are dot-files
+#
+!.gitignore
+
+\#*#

@@ -3,8 +3,17 @@
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
-	# View the current working tree status using the short format
+	# search git log
+	sl = !bash -c 'source $HOME/.functions && fzf_log'
+
+	# View the current working tree status using the short format / might remove the -s
 	s = status -s
+
+	# show the current HEAD's commit hash
+	id = log --pretty=format:'%H' -n 1
+
+	# Initialize new empty repository
+	it = !"git init && git commit -m 'root' --allow-empty"
 
 	# Show the diff between the latest commit and the current state
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
@@ -13,7 +22,7 @@
 	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 
 	# Pull in remote changes for the current repository and all its submodules
-	p = git pull --recurse-submodules
+	p = pull --recurse-submodules
 
 	# Clone a repository including all submodules
 	c = clone --recursive
@@ -21,19 +30,42 @@
 	# Commit all changes
 	ca = !git add -A && git commit -av
 
+	# Stage huhnk-wise
+	hunks = add -p
+
 	# Switch to a branch, creating it if necessary
-	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+	co = checkout -b
+	mk = checkout -b
+
+	# Just switch
+	go = checkout
+	cd = checkout
 
 	# Show verbose output about tags, branches or remotes
 	tags = tag -l
-	branches = branch -a
+	ls = branch -a
 	remotes = remote -v
+	branches = "!git checkout $(git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads | pick | cut -f2)"
 
 	# List aliases
 	aliases = config --get-regexp alias
 
 	# Amend the currently staged files to the latest commit
 	amend = commit --amend --reuse-message=HEAD
+
+	# Prepare fixup for interactive rebase (fu = fix-up)
+	# Call with the commit-ish hash that is the commit to be fixed
+	fu = commit --fixup
+
+  # Start interactive rebase while automatically selecting commits
+	# that were created with `fu` for fixup at their repsective positions
+  uf = rebase --autosquash --interactive
+
+	# Fixup some previous commit, calling `fu $sha` and `uf $sha^`
+  fufu = "!f() { git fu ${1-HEAD} && git uf ${1-HEAD}^; }; f"
+
+	# ALias for fufu
+  fixup = fufu
 
 	# Credit an author on the latest commit
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
@@ -63,6 +95,12 @@
 	# List contributors with number of commits
 	contributors = shortlog --summary --numbered
 
+	# Checkout github PR
+	copr = "!f() { \
+		git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && \
+		git checkout pr/$1; \
+	}; f"
+
 	# Merge GitHub pull request on top of the current branch or,
 	# if a branch name is specified, on top of the specified branch
 	mpr = "!f() { \
@@ -78,6 +116,32 @@
 			git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
 		fi \
 	}; f"
+
+	# Show track files that are excluded
+	excluded = ls-files -i --exclude-standard
+
+	# doge mode (use together with alias such=' ')
+	# `such git very push` -> `git push`
+	very = "!git"
+
+	# edit this config file
+	edit-config = config --global -e
+
+	# create a save-point (includes untracked files)
+	save = !git add -A && git commit -m 'SAVEPOINT'
+
+	# create a work-in-progress-point (don't include untracked files)
+	wip = !git add -u && git commit -m "WIP"
+
+	# undo last commit (e.g. save point)
+	undo = reset HEAD~1 --mixed
+
+	# wipe current directory, but save state in reflog
+	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+
+	# fix 'git dad'
+	dad = !curl -H \"Accept: text/plain\" https://icanhazdadjoke.com/ && echo "" && git add
+
 
 [apply]
 
@@ -163,6 +227,26 @@
 	default = simple
 	# Make `git push` push relevant annotated tags when pushing branches out.
 	followTags = true
+
+[interactive]
+
+	singlekey = true
+
+[sequence]
+
+	editor = interactive-rebase-tool
+
+[rerere]
+
+	enabled = true
+
+[filter "lfs"]
+
+	required = true
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	clean = git-lfs clean -- %f
+
 
 # URL shorthands
 

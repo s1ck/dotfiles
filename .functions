@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Create a new directory and enter it
-function mkd() {
+function md() {
 	mkdir -p "$@" && cd "$_";
 }
 
@@ -75,6 +75,26 @@ function dataurl() {
 	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
 }
 
+# Open a given port on localhost in the browser
+function openport() {
+	local port="${1:-8000}"
+	open "http://localhost:${port}/"
+}
+
+# Kill whatever is LISTENing on a given port, e.g. killport 9200. (killport 9200 -9 if you want to be ugly)
+function killport() {
+	local port=$1
+	shift 1
+	lsof -i :$port | grep LISTEN | awk '{print $2}' | xargs kill $@
+}
+
+# Kill whatever is connected to a given port, servers, clients, whatever. (nukeport 9200 -9 if you want to be ugly)
+function nukeport() {
+	local port=$1
+	shift 1
+	lsof -i :$port -Fp | cut -dp -f2 | xargs kill $@
+}
+
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
 	local port="${1:-8000}";
@@ -82,15 +102,6 @@ function server() {
 	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
 	# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
 	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
-}
-
-# Start a PHP server from a directory, optionally specifying the port
-# (Requires PHP 5.4.0+.)
-function phpserver() {
-	local port="${1:-4000}";
-	local ip=$(ipconfig getifaddr en1);
-	sleep 1 && open "http://${ip}:${port}/" &
-	php -S "${ip}:${port}";
 }
 
 # Compare original and gzipped file size
@@ -105,6 +116,11 @@ function gz() {
 # Run `dig` and display the most useful info
 function digga() {
 	dig +nocmd "$1" any +multiline +noall +answer;
+}
+
+# Sniff short-urls
+function longurl() {
+	curl --silent --location --head "$1" | grep -E "^Location: " | tail -n 1 | awk -F': ' '{print $2}'
 }
 
 # Show all the names (CNs and SANs) listed in the SSL certificate
@@ -162,10 +178,56 @@ function o() {
 	fi;
 }
 
+# `s` with no arguments opens the current directory in Sublime Text, otherwise
+# opens the given location
+function s() {
+	if [ $# -eq 0 ]; then
+		subl .
+	else
+		subl "$@"
+	fi
+}
+
+
+# `c` with no arguments opens the current directory in Visual studio Code, otherwise
+# opens the given location
+function c() {
+	if [ $# -eq 0 ]; then
+		code .
+	else
+		code "$@"
+	fi
+}
+
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
 # the `.git` directory, listing directories first. The output gets piped into
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
 function tre() {
-	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+	tree -aC -I '.git' --dirsfirst "$@" | less -FRNX;
+}
+
+# Shell Bookmarks
+# http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
+function jump {
+	cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
+}
+
+function mark {
+	mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
+}
+
+function unmark {
+	rm -i "$MARKPATH/$1"
+}
+
+function marks {
+	\ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
+}
+
+# http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/#update
+fzf_log() {
+	hash=$(git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" | fzf --ansi | awk '{print $1}')
+	echo $hash | pbcopy
+	git icdiff $hash
 }
