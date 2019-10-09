@@ -20,8 +20,11 @@ ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
 brew install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew install findutils
+
 # Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed --with-default-names
+# Disabled because the flag was removed from brew
+#brew install gnu-sed --with-default-names
+
 # Install a modern version of Bash.
 brew install bash
 brew install bash-completion2
@@ -33,7 +36,8 @@ if ! grep -Fq "${BREW_PREFIX}/bin/bash" /etc/shells; then
 fi;
 
 # Install `wget` with IRI support.
-brew install wget --with-iri
+# Disabled because the flag was removed from brew
+#brew install wget --with-iri
 
 # Install GnuPG to enable PGP-signing commits.
 # brew install gnupg
@@ -82,7 +86,6 @@ brew install nmap
 
 brew install ack
 brew install bat
-brew install brew-graph
 brew install cloc
 brew install diff-so-fancy
 # brew install exiv2
@@ -102,7 +105,8 @@ brew install htop
 brew install htop-osx
 brew install httpie
 brew install iftop
-brew install imagemagick --with-webp
+# Disabled because the flag was removed from brew
+#brew install imagemagick --with-webp
 brew install interactive-rebase-tool
 brew install jid
 brew install jo
@@ -121,11 +125,11 @@ brew install ponysay
 brew install prettyping
 brew install procs
 brew install pv
-brew install qlcolorcode
-brew install qlmarkdown
-brew install qlprettypatch
-brew install qlstephen
-brew install quicklook-json
+brew cask install qlcolorcode
+brew cask install qlmarkdown
+brew cask install qlprettypatch
+brew cask install qlstephen
+brew cask install quicklook-json
 # brew install rename
 brew install ripgrep
 brew install rlwrap
