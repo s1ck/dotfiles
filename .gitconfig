@@ -209,6 +209,9 @@
 	# Detect copies as well as renames
 	renames = copies
 
+	# Remove the /a and /b prefixes from the diff view
+	noprefix = true
+
 [diff "bin"]
 
 	# Use `hexdump` to diff binary files
