@@ -227,7 +227,7 @@ function marks {
 
 # http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/#update
 fzf_log() {
-	hash=$(git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" | fzf --ansi | awk '{print $1}')
+	hash=$(git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" | fzf | awk '{print $1}')
 	echo $hash | pbcopy
-	git icdiff $hash
+	git showtool $hash
 }
