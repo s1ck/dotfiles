@@ -207,6 +207,15 @@ function tre() {
 	tree -aC -I '.git' --dirsfirst "$@" | less -FRNX;
 }
 
+# Rename the current Tab in iTerm, works also if it's running `tmux -CC`
+function tabname() {
+	if [ -z $TMUX ] ; then
+		echo -ne "\033]0;"$@"\007"
+	else
+		tmux rename-window "$@"
+	fi
+}
+
 # Shell Bookmarks
 # http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
 function jump {
