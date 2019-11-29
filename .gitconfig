@@ -24,6 +24,9 @@
 	# Pull in remote changes for the current repository and all its submodules
 	p = pull --recurse-submodules
 
+	# Fetch all remotes and delete outdated tracking branches
+	f = fetch --all --prune
+
 	# Clone a repository including all submodules
 	c = clone --recursive
 
