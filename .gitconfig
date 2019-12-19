@@ -59,6 +59,9 @@
 	# Create a new commit with all changes and the same message as the last commit
 	again = commit -a --reuse-message=HEAD
 
+	# Change the commit message of the last commit
+	reword = commit --amend
+
 	# Prepare fixup for interactive rebase (fu = fix-up)
 	# Call with the commit-ish hash that is the commit to be fixed
 	fu = commit --fixup
