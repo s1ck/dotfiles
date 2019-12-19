@@ -10,6 +10,12 @@ function cdf() { # short for `cdfinder`
 	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
 }
 
+# Change to the git root directory
+function cdgitroot() {
+	local cdup="$(git rev-parse --show-cdup)";
+  test -n "$cdup" && cd "$cdup"
+}
+
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
 function targz() {
 	local tmpFile="${@%/}.tar";

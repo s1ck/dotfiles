@@ -46,9 +46,9 @@
 
 	# Show verbose output about tags, branches or remotes
 	tags = tag -l
-	ls = branch -a
+	branches = branch -a
 	remotes = remote -v
-	branches = "!git checkout $(git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads | pick | cut -f2)"
+	ls = "!git checkout $(git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads | pick | cut -f2)"
 
 	# List aliases
 	aliases = config --get-regexp alias
@@ -150,6 +150,12 @@
 
 	# fix 'git dad'
 	dad = !curl -H \"Accept: text/plain\" https://icanhazdadjoke.com/ && echo "" && git add
+
+	# Run anything on root git dir
+	run = !"exec "
+
+	# Show git root
+	proot = rev-parse --show-toplevel
 
 
 [apply]
