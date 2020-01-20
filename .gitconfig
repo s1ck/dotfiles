@@ -166,6 +166,8 @@
 	# Show git root
 	proot = rev-parse --show-toplevel
 
+	# Show the user email for the current repository.
+	whoami = config user.email
 
 [apply]
 
