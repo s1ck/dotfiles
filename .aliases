@@ -22,6 +22,7 @@ alias op="openport"
 alias od="opendocker"
 alias gg="git status -sb"
 alias gs="git status -s"
+alias ga='git add -A'
 alias gc="EDITOR='vim -c startinsert' git commit"
 alias vi='vim'
 
