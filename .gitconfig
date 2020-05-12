@@ -39,6 +39,9 @@
 	# Stage huhnk-wise
 	hunks = add -p
 
+	# Remove from staging area
+	unstage = restore --staged
+
 	# Switch to a branch, creating it if necessary
 	co = checkout -b
 	mk = checkout -b
