@@ -24,7 +24,9 @@ alias gg="git status -sb"
 alias gs="git status -s"
 alias ga='git add -A'
 alias gc="EDITOR='vim -c startinsert' git commit"
+alias gac='ga && gc'
 alias gca='ga && gc'
+alias asd='g hunks && gc'
 alias vi='vim'
 
 # Typos
