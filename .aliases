@@ -43,23 +43,26 @@ alias gir="git"
 
 alias ls='exa --classify --icons --group-directories-first --time-style=long-iso'
 
+## List files one line at a time
+alias l1="exa --group-directories-first --oneline"
+
 ### List files in long format, excluding things that are .gitignored
-alias l="ls --long --git-ignore"
+alias l0="ls --long --git-ignore"
 
 ### List files in long format
-alias ll="ls --long"
-
-### List files in long format, including git status
-alias lll="ls --long --git"
+alias l="ls --long"
 
 ### List all files long format, excluding . and ..
-alias lla="ls --long --all"
+alias la="ls --long --all"
+
+### List files in long format, including git status
+alias ll="ls --long --git"
 
 ### List all files long format, including git status, excluding . and ..
-alias llg="ls --long --all --git"
+alias lla="ls --long --git --all"
 
 ### List only directories
-alias lsdir="ls --long --only-dirs"
+alias lsdir="exa --time-style=long-iso --long --only-dirs"
 
 ## cat -> bat
 ## https://github.com/sharkdp/bat
