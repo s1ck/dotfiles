@@ -38,20 +38,28 @@ alias gir="git"
 # Replacements
 # Inspured by https://remysharp.com/2018/08/23/cli-improved
 
-## ls -> lsd
-## https://github.com/Peltoche/lsd
+## ls -> exa
+## https://github.com/ogham/exa
 
-alias ls='lsd'
+alias ls='exa --classify --icons --group-directories-first --time-style=long-iso'
 
-### List all files colorized in long format
-alias l="lsd -Fl"
-alias ll="lsd -Fhl"
+### List files in long format, excluding things that are .gitignored
+alias l="ls --long --git-ignore"
 
-### List all files colorized in long format, excluding . and ..
-alias la="lsd -Fla"
+### List files in long format
+alias ll="ls --long"
+
+### List files in long format, including git status
+alias lll="ls --long --git"
+
+### List all files long format, excluding . and ..
+alias lla="ls --long --all"
+
+### List all files long format, including git status, excluding . and ..
+alias llg="ls --long --all --git"
 
 ### List only directories
-alias lsdir="lsd -lF ${colorflag} | grep --color=never '^d'"
+alias lsdir="ls --long --only-dirs"
 
 ## cat -> bat
 ## https://github.com/sharkdp/bat
