@@ -104,3 +104,10 @@ if has("autocmd")
 	" Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
+
+if isdirectory($HOME . '.vim/undo') == 0
+  :silent !mkdir -p ~/.vim/undo >/dev/null 2>&1
+endif
+set undodir=~/.vim/undo
+set undofile
+set undoreload=10000
