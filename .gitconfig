@@ -13,13 +13,13 @@
 	id = log --pretty=format:'%H' -n 1
 
 	# Initialize new empty repository
-	it = !"git init && git commit -m 'root' --allow-empty"
+	it = !git init && git commit -m 'root' --allow-empty
 
 	# Show the diff between the latest commit and the current state
-	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+	d = "!git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 
 	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
-	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+	di = "!d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 
 	# Pull in remote changes for the current repository and all its submodules
 	p = pull --recurse-submodules
@@ -35,6 +35,12 @@
 
 	# Commit all changes
 	ca = !git add -A && git commit -av
+
+	# Select files to add
+	a = !"git add $(git status -s | grep -E -v '^M' | sed 's/...//' | fzf -m +s --marker='+' --header='Select files to stage' --layout=reverse)"
+
+	# Select files to add patch-wise
+	ap = !"git status -s | grep -E -v '^M' | sed 's/...//' | fzf -m +s --marker='+' --header='Select files to stage' --layout=reverse --print0 | xargs -0 -o git add --patch"
 
 	# Stage huhnk-wise
 	hunks = add -p
@@ -54,7 +60,7 @@
 	tags = tag -l
 	branches = branch -a
 	remotes = remote -v
-	ls = "!git checkout $(git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads | pick | cut -f2)"
+	ls = !git checkout $(git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads | pick | cut -f2)
 
 	# List aliases
 	aliases = config --get-regexp alias
@@ -108,7 +114,7 @@
 
 	# Remove branches that have already been merged with master
 	# a.k.a. ‘delete merged’
-	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+	dm = !git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
 
 	# List contributors with number of commits
 	contributors = shortlog --summary --numbered
@@ -140,7 +146,7 @@
 
 	# doge mode (use together with alias such=' ')
 	# `such git very push` -> `git push`
-	very = "!git"
+	very = !git
 
 	# edit this config file
 	edit-config = config --global -e
@@ -149,7 +155,7 @@
 	save = !git add -A && git commit -m 'SAVEPOINT'
 
 	# create a work-in-progress-point (don't include untracked files)
-	wip = !git add -u && git commit -m "WIP"
+	wip = !git add -u && git commit -m WIP
 
 	# undo last commit (e.g. save point)
 	undo = reset HEAD~1 --mixed
@@ -158,16 +164,22 @@
 	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
 
 	# fix 'git dad'
-	dad = !curl -H \"Accept: text/plain\" https://icanhazdadjoke.com/ && echo "" && git add
+	dad = !curl -H \"Accept: text/plain\" https://icanhazdadjoke.com/ && echo  && git add
 
 	# Run anything on root git dir
-	run = !"exec "
+	run = "!exec "
 
 	# Show git root
 	proot = rev-parse --show-toplevel
 
 	# Show the user email for the current repository.
 	whoami = config user.email
+
+
+[advice]
+
+	# Don't warn on empty calls to git-add
+	addEmptyPathspec = false
 
 [apply]
 
@@ -284,20 +296,20 @@
 
 [url "git@github.com:"]
 
-	insteadOf = "gh:"
-	pushInsteadOf = "github:"
-	pushInsteadOf = "git://github.com/"
+	insteadOf = gh:
+	pushInsteadOf = github:
+	pushInsteadOf = git://github.com/
 
 [url "git://github.com/"]
 
-	insteadOf = "github:"
+	insteadOf = github:
 
 [url "git@gist.github.com:"]
 
-	insteadOf = "gst:"
-	pushInsteadOf = "gist:"
-	pushInsteadOf = "git://gist.github.com/"
+	insteadOf = gst:
+	pushInsteadOf = gist:
+	pushInsteadOf = git://gist.github.com/
 
 [url "git://gist.github.com/"]
 
-	insteadOf = "gist:"
+	insteadOf = gist:
