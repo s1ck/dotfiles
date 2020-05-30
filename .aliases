@@ -22,11 +22,11 @@ alias op="openport"
 alias od="opendocker"
 alias gg="git status -sb"
 alias gs="git status -s"
-alias ga='git add -A'
+alias ga='git ap'
 alias gc="EDITOR='vim -c startinsert' git commit"
-alias gac='ga && gc'
-alias gca='ga && gc'
-alias asd='g hunks && gc'
+alias gac='git ap && gc'
+alias gca='git ap && gc'
+alias asd='git hunks && gc'
 alias vi='vim'
 
 # Typos
@@ -52,11 +52,11 @@ alias l0="ls --long --git-ignore"
 ### List files in long format
 alias l="ls --long"
 
-### List all files long format, excluding . and ..
-alias la="ls --long --all"
-
 ### List files in long format, including git status
 alias ll="ls --long --git"
+
+### List all files long format, excluding . and ..
+alias la="ls --long --all"
 
 ### List all files long format, including git status, excluding . and ..
 alias lla="ls --long --git --all"
