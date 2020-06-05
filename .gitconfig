@@ -272,6 +272,11 @@
 	# Make `git push` push relevant annotated tags when pushing branches out.
 	followTags = true
 
+[pull]
+
+	# Use rebase strategy for pulls by default
+	rebase = true
+
 [interactive]
 
 	singlekey = true
