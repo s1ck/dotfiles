@@ -239,5 +239,5 @@ alias rcopy-all="rsync -Phav"
 alias ssh_unshare="ps ax | grep ssh | grep ssh_persist | grep -v grep |  awk '{print \$1}' | xargs -r kill"
 
 # stats infos
-alias hot='istats cpu temp'
-alias fast='istats fan speed'
+alias hot='macstats cpu'
+alias fast='macstats fan'
