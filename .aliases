@@ -86,6 +86,9 @@ alias lsof='lsof -nP'
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
+# CATAAS
+alias cataas='curl -so- https://cataas.com/c | imgcat'
+
 # Doge mode (`such git`)
 alias such=' '
 
