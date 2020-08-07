@@ -115,3 +115,7 @@ endif
 set undodir=~/.vim/undo
 set undofile
 set undoreload=10000
+
+" Func the Num
+" https://gist.github.com/jjaderberg/b18a848718dee466dfd3128c979ec652
+source ~/.vim/custom/scripts/functhenum/functhenum.vim
