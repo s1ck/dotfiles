@@ -40,10 +40,13 @@
 	a = !"git add $(git status -s | grep -E -v '^M' | sed 's/...//' | fzf -m +s --marker='+' --header='Select files to stage' --layout=reverse)"
 
 	# Select files to add patch-wise
-	ap = !"git status -s | grep -E -v '^M' | sed 's/...//' | fzf -m +s --marker='+' --header='Select files to stage' --layout=reverse --print0 | xargs -0 -o git add --patch"
+	ap = !"git status -s | grep -E -v '^M' | sed 's/...//' | fzf -m +s --marker='+' --header='Select files to stage' --layout=reverse --print0 | xargs -0 -o -n1 git hunk"
 
-	# Stage huhnk-wise
+	# Stage hunk-wise
 	hunks = add -p
+
+	# Stage single file hunk-wise, tracked it if necessary
+	hunk = "!f() { git add --intent-to-add $1; git add --patch $1; }; f"
 
 	# Remove from staging area
 	unstage = restore --staged
