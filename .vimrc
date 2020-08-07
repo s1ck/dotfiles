@@ -28,7 +28,7 @@ set noeol
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 if exists("&undodir")
-	set undodir=~/.vim/undo
+  set undodir=~/.vim/undo
 endif
 
 " Don’t create backups when editing files in certain directories
@@ -48,6 +48,10 @@ syntax on
 set cursorline
 " Make tabs as wide as two spaces
 set tabstop=2
+" Shift width to equal tab width
+set shiftwidth=2
+" Expand tabs to spaces
+set expandtab
 " Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set list
@@ -77,19 +81,19 @@ set title
 set showcmd
 " Use relative line numbers
 if exists("&relativenumber")
-	set relativenumber
-	au BufReadPost * set relativenumber
+  set relativenumber
+  au BufReadPost * set relativenumber
 endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
-	let save_cursor = getpos(".")
-	let old_query = getreg('/')
-	:%s/\s\+$//e
-	call setpos('.', save_cursor)
-	call setreg('/', old_query)
+  let save_cursor = getpos(".")
+  let old_query = getreg('/')
+  :%s/\s\+$//e
+  call setpos('.', save_cursor)
+  call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
 " Save a file as root (,W)
@@ -97,12 +101,12 @@ noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 " Automatic commands
 if has("autocmd")
-	" Enable file type detection
-	filetype on
-	" Treat .json files as .js
-	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-	" Treat .md files as Markdown
-	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+  " Enable file type detection
+  filetype on
+  " Treat .json files as .js
+  autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+  " Treat .md files as Markdown
+  autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
 
 if isdirectory($HOME . '.vim/undo') == 0
