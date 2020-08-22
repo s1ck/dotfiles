@@ -23,7 +23,7 @@ alias od="opendocker"
 alias gg="git status -sb"
 alias gs="git status -s"
 alias ga='git ap'
-alias gc="EDITOR='vim -c startinsert' git commit"
+alias gc="git commit --verbose"
 alias gac='git ap && gc'
 alias gca='git ap && gc'
 alias asd='git hunks && gc'
