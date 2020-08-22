@@ -129,6 +129,13 @@ function longurl() {
 	curl --silent --location --head "$1" | grep -E "^Location: " | tail -n 1 | awk -F': ' '{print $2}'
 }
 
+# CATS
+function catsay() {
+	local input="${@}";
+	local text=$(python -c "import sys, urllib as ul; print ul.quote('${input}');");
+	curl --silent --output - "https://cataas.com/cat/says/${text}" | imgcat
+}
+
 # Show all the names (CNs and SANs) listed in the SSL certificate
 # for a given domain
 function getcertnames() {
