@@ -202,9 +202,9 @@ function s() {
 }
 
 
-# `c` with no arguments opens the current directory in Visual studio Code, otherwise
+# `e` with no arguments opens the current directory in Visual studio Code, otherwise
 # opens the given location
-function c() {
+function e() {
 	if [ $# -eq 0 ]; then
 		code .
 	else
