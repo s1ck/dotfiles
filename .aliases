@@ -17,7 +17,6 @@ alias p="cd ~/dev"
 alias g="git"
 alias h="history"
 alias j="jq '.'"
-alias w='workon'
 alias jj="jq -C '.' | less -R"
 alias op="openport"
 alias od="opendocker"
