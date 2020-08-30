@@ -51,6 +51,9 @@
 	# Remove from staging area
 	unstage = restore --staged
 
+	# Cherry pick
+	cp = cherry-pick
+
 	# Switch to a branch, creating it if necessary
 	co = checkout -b
 	mk = checkout -b
