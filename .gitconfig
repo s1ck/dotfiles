@@ -168,6 +168,9 @@
 	# Don't warn on empty calls to git-add
 	addEmptyPathspec = false
 
+	# Don't warn upon entering a detached HEAD
+	detachedHead = false
+
 [apply]
 
 	# Detect whitespace errors when applying a patch
