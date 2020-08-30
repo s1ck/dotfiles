@@ -66,7 +66,7 @@ alias lsdir="exa --time-style=long-iso --long --only-dirs"
 
 ## cat -> bat
 ## https://github.com/sharkdp/bat
-alias cat='bat'
+alias cat='bat --plain --theme=TwoDark'
 alias ogcat='command cat'
 
 ## ping -> prettyping
