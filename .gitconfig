@@ -106,6 +106,12 @@
 	# Interactive rebase with the given number of latest commits
 	reb = "!r() { git rebase -i HEAD~$1; }; r"
 
+	# Continue directly with the rebase
+	rec = "!GIT_EDITOR=true git rebase --continue"
+
+	# Continue directly with the cherry-pick
+	cpc = "!GIT_EDITOR=true git cherry-pick --continue"
+
 	# Remove the old tag with this name and tag the latest commit with it.
 	retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
 
