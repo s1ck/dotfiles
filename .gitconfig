@@ -97,6 +97,9 @@
 	# Rebase onto master
 	remaster = "!f() { git fetch ${2-origin} ${1-master}:${1-master} && git rebase --interactive ${1-master}; }; f"
 
+	# Rebase onto main
+	remain = "!f() { git fetch ${2-origin} ${1-main}:${1-main} && git rebase --interactive ${1-main}; }; f"
+
 	# Credit an author on the latest commit
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
 
