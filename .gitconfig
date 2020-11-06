@@ -285,6 +285,7 @@
 
 [interactive]
 
+	# Don't require to press Enter when doing an interactive add
 	singlekey = true
 
 	# Use delta: https://github.com/dandavison/delta#configuration
