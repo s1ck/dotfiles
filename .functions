@@ -16,6 +16,10 @@ function cdgitroot() {
   test -n "$cdup" && cd "$cdup"
 }
 
+# zoxide
+# https://github.com/ajeetdsouza/zoxide
+eval "$(zoxide init bash)"
+
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
 function targz() {
 	local tmpFile="${@%/}.tar";
