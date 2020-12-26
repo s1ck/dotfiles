@@ -1,0 +1,137 @@
+# Prompt order
+format = """
+$time\
+$battery\
+$directory\
+$golang\
+$java\
+$nodejs\
+$python\
+$ruby\
+$rust\
+$swift\
+$git_branch\
+$git_commit\
+$hg_branch\
+${custom.navigators}\
+$git_state\
+$git_status\
+$docker_context\
+$package\
+$cmd_duration\
+$line_break\
+$jobs\
+$status\
+$character
+"""
+
+# Don't print a new line at the start of the prompt
+# We are adding our own new line
+add_newline = false
+
+[battery]
+full_symbol = ""
+charging_symbol = ""
+discharging_symbol = ""
+
+# show battery status already at 90%
+[[battery.display]]
+threshold = 90
+style = "dimmed"
+
+# Replace the "❯" symbol in the prompt with "∵"
+# [character]
+# symbol = "∵"
+# style_success = ""
+
+# truncate every parent dir
+# but keep 1 char for every parent
+[directory]
+read_only = " "
+style = "green"
+truncation_length = 11
+# fish style, replacing leading directories
+# disabled because it cannot be used together with substitutions
+# fish_style_pwd_dir_length = 1
+
+# Shortcuts
+[directory.substitutions]
+"~/dev" = ""
+"src/main/java" = "<main>"
+"src/test/java" = "<test>"
+
+[docker_context]
+symbol = " "
+
+[git_branch]
+format = "[${symbol}${branch}]($style) "
+symbol = " "
+style = "purple"
+
+# Also show tags
+[git_commit]
+tag_disabled = false
+tag_symbol = " "
+
+# lowercase words instead of uppercase
+# no need to be so aggressive
+[git_state]
+rebase = "rebasing"
+merge = "merging"
+revert = "reverting"
+cherry_pick	= "cherry-picking"
+bisect = "bisecting"
+am = "am"
+am_or_rebase = "am/rebasing"
+
+[git_status]
+# disabled for performance reasons
+disabled = true
+
+[golang]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+format = "[${symbol}${version}]($style) "
+style = "cyan"
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = " "
+format = "[$symbol$version]($style) "
+style = "208"
+
+[python]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+format = "[${symbol}${version}]($style) "
+style = "red"
+
+[swift]
+symbol = "ﯣ "
+
+# Show current time (when the prompt was rendered)
+[time]
+disabled = false
+format = "[$time]($style) "
+time_format = "%H:%M:%S"
+style = "dimmed"
+
+# Show current navigators
+[custom.navigators]
+description = "Show git-drive navigators"
+command = "git drive show"
+when = "git rev-parse --is-inside-work-tree"
+symbol = "  "
+style = "cyan"

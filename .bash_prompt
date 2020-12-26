@@ -1,12 +1,4 @@
 #!/usr/bin/env bash
 
-# https://github.com/knutwalker/kbashprompt
-
-# Make sure to keep the single quotes, so that the promp is re-evaluated on every prompt
-# Otherwise it would only change if you open a new bash session 
-export PS1='$(kbashprompt)';
-
-# PS2 is not dynamic, can be calculated once and reused
-export PS2=$(kbashprompt 2);
-
-
+# https://starship.rs
+eval "$(starship init bash)"

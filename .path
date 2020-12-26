@@ -1,15 +1,21 @@
-# Add sublime text binary
-SUBLIMEPATH="/Applications/Sublime Text 3.app/Contents/SharedSupport";
-PATH=$SUBLIMEPATH/bin:$PATH;
+# (Don't) Add sublime text binary
+#SUBLIMEPATH="/Applications/Sublime Text 3.app/Contents/SharedSupport";
+#PATH=$SUBLIMEPATH/bin:$PATH;
 
-# Add Visual Studio Code binary
-VSCODEPATH="/Applications/Visual Studio Code.app/Contents/Resources/app";
-PATH=$VSCODEPATH/bin:$PATH;
+# (Don't) Add Visual Studio Code binary
+# This is handled via symlink into ~/bin
+# The space in the path is troublesome for certain scripts
+#VSCODEPATH="/Applications/Visual Studio Code M1.app/Contents/Resources/app";
+#PATH=$VSCODEPATH/bin:$PATH;
 
-# Add brew directories
+# Add x86_64 brew directories
 PATH="/usr/local/bin:/usr/local/sbin:$PATH";
+# Add aarch64 brew directories
+PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH";
 
-# Add cargo binaries
+# Add x86_64 cargo binaries
+PATH="$HOME/.x86_64/.cargo/bin:$PATH";
+# Add aarch64 cargo binaries
 PATH="$HOME/.cargo/bin:$PATH";
 
 # Add ~/bin
