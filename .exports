@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Make Sublime Text the default editor.
+# Make VS Code the default editor.
 export EDITOR='code -w';
 
 # Except for git
