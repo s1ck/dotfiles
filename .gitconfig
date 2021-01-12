@@ -27,6 +27,9 @@
 	# Fetch all remotes and delete outdated tracking branches
 	f = fetch --all --prune
 
+	# Push with force, but the Light kind
+	pff = push --force-with-lease
+
 	# Pull changes into master without having to switch to it
 	up = "!f() { git fetch ${2-origin} ${1-master}:${1-master}; }; f"
 
