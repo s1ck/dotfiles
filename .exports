@@ -38,6 +38,11 @@ export HOMEBREW_NO_ANALYTICS=1
 # https://stackoverflow.com/a/42265848/96656
 # export GPG_TTY=$(tty);
 
+# Install Nord dircolors
+# Based of https://www.nordtheme.com/docs/ports/dircolors/installation
+# With changes so that it runs on this system
+test -r ~/.dir_colors && eval $(gdircolors ~/.dir_colors)
+
 # Shell Bookmarks
 # http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
 export MARKPATH=$HOME/.marks
