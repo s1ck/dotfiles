@@ -40,6 +40,9 @@ alias intelbrew="arch -x86_64 /usr/local/bin/brew"
 # alias intelcargo="arch -x86_64 env HOME=/Users/knut/.x86_64 /Users/knut/.x86_64/.cargo/bin/cargo"
 # alias intelrustup="arch -x86_64 env HOME=/Users/knut/.x86_64 /Users/knut/.x86_64/.cargo/bin/rustup"
 alias intelrs="arch -x86_64 env HOME=/Users/knut/.x86_64 PATH=/Users/knut/.x86_64/.cargo/bin:$PATH CARGO_HOME=/Users/knut/.x86_64/.cargo RUSTUP_HOME=/Users/knut/.x86_64/.rustup"
+# https://twitter.com/emorydunn/status/1345443732154245121
+alias steep="env HOMEBREW_INSTALL_BADGE=🍵 brew"
+alias intelsteep="arch -x86_64 env HOMEBREW_INSTALL_BADGE=🍵 /usr/local/bin/brew"
 
 # Replacements
 # Inspured by https://remysharp.com/2018/08/23/cli-improved
