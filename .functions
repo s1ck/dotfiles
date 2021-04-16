@@ -216,6 +216,15 @@ function e() {
 	fi
 }
 
+# `z` with no arguments opens the zoxide db in fzf, otherwise it jumps to the zoxide directory
+function z() {
+	if [ $# -eq 0 ]; then
+		__zoxide_zi "$@"
+	else
+		__zoxide_z "$@"
+	fi
+}
+
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
 # the `.git` directory, listing directories first. The output gets piped into
 # `less` with options to preserve color and line numbers, unless the output is
