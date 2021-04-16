@@ -271,3 +271,31 @@ fzf_log() {
 function jdk() {
 	eval $(jdkman "$*");
 }
+
+# Offer merged branches for deletion
+function git-delete-merged() {
+	# list branches that are merged when viewed from the current branch or whatever branch is given as the first argument
+	git branch --color=always --no-column --merged $1 |
+	  # only select branches that aren't special, i.e. checked out anywhere
+	  grep --regexp='^  ' |
+	  # remove the empty indicator columns
+	  cut -c 3- |
+	  # select any number of branches with a preview of what they are
+	  fzf-tmux -- --ansi --print0 --multi --preview="git log {} --" |
+	  # remove each branch with a prompt
+	  xargs -0 -p -n1 git branch --delete
+}
+
+# Less safe versoin of git-delete-merged
+function git-delete-merged-force() {
+	# list branches that are merged when viewed from the current branch or whatever branch is given as the first argument
+	git branch --color=always --no-column --merged $1 |
+	  # only select branches that aren't special, i.e. checked out anywhere
+	  grep --regexp='^  ' |
+	  # remove the empty indicator columns
+	  cut -c 3- |
+	  # select any number of branches with a preview of what they are
+	  fzf-tmux -- --ansi --print0 --multi --preview="git log {} --" |
+	  # remove all in one go
+	  xargs -0 git branch --delete --force
+}
