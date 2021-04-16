@@ -34,9 +34,9 @@ full_symbol = ""
 charging_symbol = ""
 discharging_symbol = ""
 
-# show battery status already at 90%
+# show battery status already at 50%
 [[battery.display]]
-threshold = 90
+threshold = 50
 style = "dimmed"
 
 # Replace the "❯" symbol in the prompt with "∵"
