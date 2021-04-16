@@ -266,3 +266,8 @@ fzf_log() {
 	echo $hash | pbcopy
 	git showtool $hash
 }
+
+# switch to a Java version with fuzzy selection
+function jdk() {
+	eval $(jdkman "$*");
+}
