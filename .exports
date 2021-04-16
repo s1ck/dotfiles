@@ -10,8 +10,8 @@ export GIT_EDITOR='vim -c startinsert';
 export PYTHONIOENCODING='UTF-8';
 
 # Increase Bash history size. Allow 64³ entries; the default is 500.
-export HISTSIZE='262144';
-export HISTFILESIZE='524288';
+export HISTSIZE=-1;
+export HISTFILESIZE=-1;
 # Omit duplicates and commands that begin with a space from history.
 export HISTCONTROL='ignoreboth';
 # log timestamps in history
