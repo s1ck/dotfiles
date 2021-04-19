@@ -138,7 +138,7 @@
 	contributors = shortlog --summary --numbered
 
 	# Checkout github PR
-	copr = "!f() { gh pr checkout $1; }; f"
+	copr = coprs
 
 	# Show track files that are excluded
 	excluded = ls-files -i --exclude-standard
