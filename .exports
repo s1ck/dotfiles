@@ -9,6 +9,9 @@ export GIT_EDITOR='vim -c startinsert';
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8';
 
+# Always be able to cd from any of those directories
+export CDPATH=".:~:~/dev:~/dev/neo"
+
 # Increase Bash history size. Allow 64³ entries; the default is 500.
 export HISTSIZE=-1;
 export HISTFILESIZE=-1;
