@@ -13,6 +13,8 @@
 # The files are added via symlink in ~~/bin 
 # /Applications/Little Snitch.app/Contents/Components
 
+# Add Zig installation
+PATH="${HOME}/dev/ziglang/current:$PATH";
 
 # Add x86_64 brew directories
 PATH="/usr/local/bin:/usr/local/sbin:$PATH";
