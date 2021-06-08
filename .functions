@@ -268,8 +268,11 @@ fzf_log() {
 }
 
 # switch to a Java version with fuzzy selection
+# requires the following binaries
+#  * https://github.com/junegunn/fzf
+#  * https://github.com/knutwalker/jdkman
 function jdk() {
-	eval $(jdkman "$*");
+	$(jdkman "$*");
 }
 
 # Offer merged branches for deletion
