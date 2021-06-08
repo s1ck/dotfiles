@@ -302,3 +302,9 @@ function git-delete-merged-force() {
 	  # remove all in one go
 	  xargs -0 git branch --delete --force
 }
+
+# checkout an Github PR
+function git-coprs() {
+	local pr=$(k-git-tools list-prs --sort-by=updated_at --me=knutwalker | fzf --ansi --with-nth=1 --delimiter='\t' --preview='echo -e {2}' --preview-window='up' --layout='reverse' | sd '#(\d+).*' '$1')
+	[[ -n "$pr" ]] && gh pr checkout "$pr"
+}
