@@ -29,6 +29,9 @@ $character
 # We are adding our own new line
 add_newline = false
 
+# Allow command up to 1.337 seconds to complete
+command_timeout = 1337
+
 [battery]
 full_symbol = ""
 charging_symbol = ""
