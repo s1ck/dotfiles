@@ -138,7 +138,7 @@
 	contributors = shortlog --summary --numbered
 
 	# List merged Github PRs between two commits
-	ghpr-diff = log --reverse --merges --fixed-strings --grep='Merge pull request' --pretty='tformat:- %b'
+	ghpr-diff = log --reverse --merges --fixed-strings --grep='Merge pull request' --pretty='tformat:- %b (%s)'
 
 	# Checkout github PR
 	copr = coprs
