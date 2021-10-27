@@ -10,6 +10,7 @@ alias -- -="cd -"
 
 # Shortcuts
 alias c="cargo"
+alias n="cargo +nightly"
 alias d="cd ~/dev"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
