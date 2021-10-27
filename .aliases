@@ -51,7 +51,7 @@ alias intelsteep="arch -x86_64 env HOMEBREW_INSTALL_BADGE=🍵 /usr/local/bin/br
 ## ls -> exa
 ## https://github.com/ogham/exa
 
-alias ls='exa --classify --icons --group-directories-first --time-style=long-iso'
+alias ls='exa --classify --group-directories-first --time-style=long-iso'
 
 ## List files one line at a time
 alias l1="exa --group-directories-first --oneline"
