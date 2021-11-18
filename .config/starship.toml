@@ -59,6 +59,7 @@ truncation_length = 11
 
 # Shortcuts
 [directory.substitutions]
+#"~/dev" = "👨🏻‍💻"
 "~/dev" = ""
 "src/main/java" = "<main>"
 "src/test/java" = "<test>"
@@ -74,6 +75,7 @@ style = "purple"
 # Also show tags
 [git_commit]
 tag_disabled = false
+# tag_symbol = "🀱"
 tag_symbol = " "
 
 # lowercase words instead of uppercase
@@ -98,6 +100,7 @@ symbol = " "
 symbol = " "
 
 [java]
+#symbol = "☕︎"
 symbol = " "
 format = "[${symbol}${version}]($style) "
 style = "cyan"
@@ -126,7 +129,7 @@ symbol = "ﯣ "
 
 # Show current time (when the prompt was rendered)
 [time]
-disabled = false
+# disabled = false
 format = "[$time]($style) "
 time_format = "%H:%M:%S"
 style = "dimmed"
@@ -136,5 +139,6 @@ style = "dimmed"
 description = "Show git-drive navigators"
 command = "git-drive show"
 when = "git-drive show --fail-if-empty" # "git rev-parse --is-inside-work-tree"
+#format = "[ $output]($style)"
 symbol = "  "
 style = "cyan"
