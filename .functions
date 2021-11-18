@@ -270,16 +270,17 @@ fzf_log() {
 
 # switch to a Java version with fuzzy selection
 # requires the following binaries
+#  * https://github.com/sharkdp/fd
 #  * https://github.com/junegunn/fzf
-#  * https://github.com/knutwalker/jdkman
-function jdk() {
-	eval $(jdkman "$@");
-}
-# This one is a simpler version without the use of jdkman
+#  * fzf-tmux wrapper from https://github.com/junegunn/fzf/blob/master/bin/fzf-tmux
 #function jdk() {
 #	IFS=$'\n' version=$(fd --exact-depth=1 --type=directory --search-path="${SDKMAN_CANDIDATES_DIR}/java" --exec echo {/} | sort --version-sort | fzf-tmux -- --exit-0 --query="$1")
 #	[[ -n "$version" ]] && sdk use java $version
 #}
+
+function jdk() {
+	eval $(jdkman "$@");
+}
 
 # Offer merged branches for deletion
 function git-delete-merged() {
