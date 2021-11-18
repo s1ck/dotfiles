@@ -28,7 +28,7 @@ alias gc="git commit --verbose"
 alias gac='git ap && gc'
 alias gca='git ap && gc'
 alias asd='git hunks && gc'
-alias vi="vim"
+alias vi="hx"
 
 # Typos
 alias whoch='which'
@@ -46,7 +46,7 @@ alias steep="env HOMEBREW_INSTALL_BADGE=🍵 brew"
 alias intelsteep="arch -x86_64 env HOMEBREW_INSTALL_BADGE=🍵 /usr/local/bin/brew"
 
 # Replacements
-# Inspured by https://remysharp.com/2018/08/23/cli-improved
+# Inspired by https://remysharp.com/2018/08/23/cli-improved
 
 ## ls -> exa
 ## https://github.com/ogham/exa

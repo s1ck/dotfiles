@@ -1,0 +1,13 @@
+theme = "onedark"
+
+[lsp]
+display-messages = true
+
+[editor]
+line-number = "relative"
+
+[keys.normal]
+"A-ret"= "code_action"
+
+[keys.insert]
+"A-ret" = "code_action"
