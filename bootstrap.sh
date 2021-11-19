@@ -2,7 +2,7 @@
 
 cd "$(dirname "${BASH_SOURCE}")";
 
-git pull knutwalker knutwalker;
+git pull s1ck s1ck;
 
 function doIt() {
 	rsync --exclude ".git/" \

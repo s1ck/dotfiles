@@ -12,7 +12,7 @@ export PYTHONIOENCODING='UTF-8';
 # Always be able to cd from any of those directories
 export CDPATH=".:~:~/dev:~/dev/neo"
 
-# Increase Bash history size. Allow 64³ entries; the default is 500.
+# Increase Bash history size. Allow unlimited entries; the default is 500.
 export HISTSIZE=-1;
 export HISTFILESIZE=-1;
 # Omit duplicates and commands that begin with a space from history.
@@ -21,7 +21,7 @@ export HISTCONTROL='ignoreboth';
 export HISTTIMEFORMAT="%F %T "
 # Make some commands not show up in history
 export HISTIGNORE="ll:ls:l:..:cd:cd -:gg:pwd:exit:date"
-# Immediately append to history file
+# Immediately append to history file (bash specific)
 export PROMPT_COMMAND="${PROMPT_COMMAND}; history -a"
 
 # Prefer US English and use UTF-8.
@@ -61,13 +61,13 @@ export FZF_ALT_C_COMMAND="cd ${HOME}/dev; bfs -type d -nohidden | sed s*^\.*${HO
 bind -x '"\C-x\C-p": vim $(fzf);'
 
 # fw: https://github.com/brocode/fw/blob/b797b3c51e1400400b2d9b5c2b602b7c733e4f5b/doc/installation.org
-if [[ -x "$(command -v fw)" ]]; then
-  if [[ -x "$(command -v fzf)" ]]; then
-    eval "$(fw print-bash-setup -f 2>/dev/null)"
-  else
-    eval "$(fw print-bash-setup 2>/dev/null)"
-  fi
-fi
+# if [[ -x "$(command -v fw)" ]]; then
+#   if [[ -x "$(command -v fzf)" ]]; then
+#     eval "$(fw print-bash-setup -f 2>/dev/null)"
+#   else
+#     eval "$(fw print-bash-setup 2>/dev/null)"
+#   fi
+# fi
 
 # SDKMAN
 export SDKMAN_DIR="${HOME}/.sdkman"

@@ -244,21 +244,21 @@ function tabname() {
 
 # Shell Bookmarks
 # http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
-function jump {
-	cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
-}
+# function jump {
+# 	cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
+# }
 
-function mark {
-	mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
-}
+# function mark {
+# 	mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
+# }
 
-function unmark {
-	rm -i "$MARKPATH/$1"
-}
+# function unmark {
+# 	rm -i "$MARKPATH/$1"
+# }
 
-function marks {
-	\ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
-}
+# function marks {
+# 	\ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
+# }
 
 # http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/#update
 fzf_log() {
@@ -296,7 +296,7 @@ function git-delete-merged() {
 	  xargs -0 -p -n1 git branch --delete
 }
 
-# Less safe versoin of git-delete-merged
+# Less safe version of git-delete-merged
 function git-delete-merged-force() {
 	# list branches that are merged when viewed from the current branch or whatever branch is given as the first argument
 	git branch --color=always --no-column --merged $1 |
@@ -311,7 +311,7 @@ function git-delete-merged-force() {
 }
 
 # checkout an Github PR
-function git-coprs() {
-	local pr=$(k-git-tools list-prs --sort-by=updated_at --me=knutwalker | fzf --ansi --with-nth=1 --delimiter='\t' --preview='echo -e {2}' --preview-window='up' --layout='reverse' | sd '#(\d+).*' '$1')
-	[[ -n "$pr" ]] && gh pr checkout "$pr"
-}
+# function git-coprs() {
+# 	local pr=$(k-git-tools list-prs --sort-by=updated_at --me=knutwalker | fzf --ansi --with-nth=1 --delimiter='\t' --preview='echo -e {2}' --preview-window='up' --layout='reverse' | sd '#(\d+).*' '$1')
+# 	[[ -n "$pr" ]] && gh pr checkout "$pr"
+# }
