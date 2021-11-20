@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-# https://starship.rs
-eval "$(starship init bash)"
