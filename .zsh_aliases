@@ -1,0 +1,96 @@
+# Shortcuts
+
+alias h="history"
+alias vi="hx"
+
+## Cargo / Rust
+alias c="cargo"
+alias n="cargo +nightly"
+alias rshell="evcxr"
+
+## Directories
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+
+## Git
+alias g="git"
+alias gg="git status -sb"
+alias gs="git status -s"
+alias ga='git ap'
+alias gc="git commit --verbose"
+alias gac='git ap && gc'
+alias gca='git ap && gc'
+alias asd='git hunks && gc'
+
+# Typos
+alias whoch='which'
+alias gut="git"
+alias got="git"
+alias gir="git"
+
+## ls -> exa
+## https://github.com/ogham/exa
+
+alias ls='exa --classify --icons --group-directories-first --time-style=long-iso'
+
+## List files one line at a time
+alias l1="exa --group-directories-first --oneline"
+
+### List files in long format, excluding things that are .gitignored
+alias l0="ls --long --git-ignore"
+
+### List files in long format
+alias l="ls --long"
+
+### List files in long format, including git status
+alias ll="ls --long --git"
+
+### List all files long format, excluding . and ..
+alias la="ls --long --all"
+
+## cat -> bat
+## https://github.com/sharkdp/bat
+alias cat='bat --plain --theme=TwoDark'
+
+# Always enable colored `grep` output
+# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# CATAAS
+alias cataas='curl -so- https://cataas.com/c | imgcat'
+
+# Get week number
+alias week='date +%V'
+
+# IP addresses
+alias myip="dig @resolver4.opendns.com myip.opendns.com +short"
+alias localip="ipconfig getifaddr en0"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
+# Canonical hex dump; some systems have this symlinked
+command -v hd > /dev/null || alias hd="hexdump -C"
+
+# macOS has no `md5sum`, so use `md5` as a fallback
+command -v md5sum > /dev/null || alias md5sum="md5"
+
+# macOS has no `sha1sum`, so use `shasum` as a fallback
+command -v sha1sum > /dev/null || alias sha1sum="shasum"
+
+# Trim new lines and copy to clipboard
+alias ctrlc="tr -d '\n' | pbcopy"
+
+# Recursively delete target and build dirs as well as`.DS_Store` files
+alias cleanup="find . \( \( -type d -name target \) -or \( -type d -name build \) -or \( -type f -name '*.DS_Store' \) \) -exec rm -r {} \;"
+
+# Update htop more frequently
+alias htop='sudo htop -d 10'
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload="exec ${SHELL} -l"
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
+
+
