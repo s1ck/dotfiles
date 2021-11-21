@@ -73,11 +73,11 @@ brew install binutils
 
 # brew install ack
 # brew install bat
-brew install cloc
-brew install diff-so-fancy
+# brew install cloc
+# brew install diff-so-fancy
 # brew install exiv2
 brew install fd
-brew install fortune
+# brew install fortune
 brew install fzf
 brew install gawk
 brew install git
@@ -86,10 +86,9 @@ brew install git-sizer
 # brew install gnupg
 # brew install gnutls
 # brew install gpgme
-brew install graphviz
+# brew install graphviz
 # brew install gs
 brew install htop
-brew install htop-osx
 # brew install httpie
 # brew install iftop
 # Disabled because the flag was removed from brew
@@ -98,40 +97,41 @@ brew install htop-osx
 # brew install jid
 # brew install jo
 # brew install jq
-brew install jvmtop
-brew install lsd
+# brew install jvmtop
+# brew install lsd
 # brew install lua
 # brew install lynx
 # brew install ncdu
 brew install openssl
-brew install p7zip
-brew install pbzip2
+# brew install p7zip
+# brew install pbzip2
 # brew install pick
 # brew install pigz
 # brew install ponysay
 # brew install prettyping
 # brew install procs
 # brew install pv
-brew cask install qlcolorcode
-brew cask install qlmarkdown
-brew cask install qlprettypatch
-brew cask install qlstephen
-brew cask install quicklook-json
+# brew cask install qlcolorcode
+# brew cask install qlmarkdown
+# brew cask install qlprettypatch
+# brew cask install qlstephen
+# brew cask install quicklook-json
 # brew install rename
 # brew install ripgrep
-brew install rlwrap
-brew install roll
+# brew install rlwrap
+# brew install roll
 brew install rsync
-brew install rtmpdump
+# brew install rtmpdump
 brew install ssh-copy-id
-brew install the_silver_searcher
+brew install starship
+# brew install the_silver_searcher
 brew install trash
 # brew install tree
-brew install unrar
+# brew install unrar
 # brew install vbindiff
-brew install wrk
+# brew install wrk
 brew install youtube-dl
-brew install zopfli
+# brew install zopfli
 
 # Remove outdated versions from the cellar.
 brew cleanup

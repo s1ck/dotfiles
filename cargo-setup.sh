@@ -176,9 +176,6 @@ cargo install so
 # Graph history of GitHub stars of a user or repo over time
 # https://github.com/dtolnay/star-history
 cargo install star-history
-# The minimal, blazing-fast, and infinitely customizable prompt for any shell!
-# https://github.com/starship/starship
-cargo install starship
 # A very fast implementation of tldr in Rust
 # https://github.com/dbrgn/tealdeer
 cargo install tealdeer
