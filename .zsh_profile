@@ -86,3 +86,4 @@ test -e ~/.zsh_prompt    && source ~/.zsh_prompt
 test -e ~/.zsh_exports   && source ~/.zsh_exports
 test -e ~/.zsh_aliases   && source ~/.zsh_aliases
 test -e ~/.zsh_functions && source ~/.zsh_functions
+test -e ~/.zsh_extra     && source ~/.zsh_extra
