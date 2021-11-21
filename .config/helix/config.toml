@@ -7,6 +7,8 @@ display-messages = true
 line-number = "relative"
 
 [keys.normal]
+"X" = "extend_line_up"
+"C-w" = "expand_selection"
 "A-ret"= "code_action"
 
 [keys.insert]
