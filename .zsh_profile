@@ -15,7 +15,8 @@ ZSH_THEME="robbyrussell"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# Not necessary, since I use topgrade for updating oh-my-zsh
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
 # DISABLE_UPDATE_PROMPT="true"
@@ -61,16 +62,13 @@ ENABLE_CORRECTION="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(cargo)
 
-source $ZSH/oh-my-zsh.sh
+test -e $ZSH/oh-my-zsh.sh && source $ZSH/oh-my-zsh.sh
 
-# User configuration
-source ~/.zsh_path
-source ~/.zsh_prompt
-source ~/.zsh_exports
-source ~/.zsh_aliases
+## User configuration
 
 # Automatically cd into the dir if no cd is typed
 setopt auto_cd
+
 # Automatically search in the following dirs when cd is used
 cdpath=($HOME $HOME/Devel $HOME/Devel/Java $HOME/Devel/Rust)
 
@@ -78,7 +76,13 @@ cdpath=($HOME $HOME/Devel $HOME/Devel/Java $HOME/Devel/Rust)
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+test -f ~/.fzf.zsh && source ~/.fzf.zsh
 
 # SDKMAN
-[[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
+test -s "${HOME}/.sdkman/bin/sdkman-init.sh" && source "${HOME}/.sdkman/bin/sdkman-init.sh"
+
+test -e ~/.zsh_path      && source ~/.zsh_path
+test -e ~/.zsh_prompt    && source ~/.zsh_prompt
+test -e ~/.zsh_exports   && source ~/.zsh_exports
+test -e ~/.zsh_aliases   && source ~/.zsh_aliases
+test -e ~/.zsh_functions && source ~/.zsh_functions
