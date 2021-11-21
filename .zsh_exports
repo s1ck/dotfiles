@@ -24,5 +24,9 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # SDKMAN
 export SDKMAN_DIR="/Users/s1ck/.sdkman";
 
+# binutils
+export LDFLAGS="-L/opt/homebrew/opt/binutils/lib -L/opt/homebrew/opt/openssl@3/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/binutils/include -I/opt/homebrew/opt/openssl@3/include"
+
 # GPG MacOS fix
 export GPG_TTY=${tty};
