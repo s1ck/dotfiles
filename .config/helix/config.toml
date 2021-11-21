@@ -1,7 +1,4 @@
-theme = "onedark"
-
-[lsp]
-display-messages = true
+theme = "bogster"
 
 [editor]
 line-number = "relative"
