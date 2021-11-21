@@ -128,3 +128,10 @@ function git-delete-merged-force() {
   # remove all in one go
   xargs -0 git branch --delete --force
 }
+
+# https://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before-2/
+fzf_log() {
+  hash=$(git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" | fzf --ansi | awk '{print $1}')
+  echo $hash | pbcopy
+  git showtool $hash
+}
