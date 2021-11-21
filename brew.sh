@@ -118,6 +118,9 @@ brew install openssl
 # brew cask install quicklook-json
 # brew install rename
 # brew install ripgrep
+brew install rga
+# Suggested for ripgrep-all
+brew install pandoc poppler tesseract ffmpeg
 # brew install rlwrap
 # brew install roll
 brew install rsync
