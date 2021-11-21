@@ -1,4 +1,4 @@
-# ~Mathias’s~ Knutwalker's dotfiles
+# ~Mathias’s~ ~Knutwalker's~ s1ck's dotfiles
 
 ![Screenshot of my shell prompt](https://f000.backblazeb2.com/file/KnutwalkerDotfiles/dotfiles.png)
 
