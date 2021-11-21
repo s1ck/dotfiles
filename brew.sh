@@ -121,6 +121,7 @@ brew install openssl
 brew install p7zip
 brew install pbzip2
 brew install pick
+# Parallel Gzip
 brew install pigz
 brew install ponysay
 brew install prettyping
