@@ -25,27 +25,13 @@ brew install findutils
 # Disabled because the flag was removed from brew
 #brew install gnu-sed --with-default-names
 
-# Install a modern version of Bash.
-brew install bash
-brew install bash-completion2
-
-# Switch to using brew-installed bash as default shell
-if ! grep -Fq "${BREW_PREFIX}/bin/bash" /etc/shells; then
-  echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells;
-  chsh -s "${BREW_PREFIX}/bin/bash";
-fi;
-
-# Install `wget` with IRI support.
-# Disabled because the flag was removed from brew
-#brew install wget --with-iri
-
 # Install GnuPG to enable PGP-signing commits.
 # brew install gnupg
 
 # Install more recent versions of some macOS tools.
 # Disabled because the flag was removed from brew
 #brew install vim --with-override-system-vi
-brew install grep
+# brew install grep
 # brew install openssh
 # brew install screen
 # brew install php
@@ -72,7 +58,7 @@ brew install binutils
 # brew install john
 # brew install knock
 # brew install netpbm
-brew install nmap
+# brew install nmap
 # brew install pngcheck
 # brew install socat
 # brew install sqlmap
@@ -85,8 +71,8 @@ brew install nmap
 
 # Install other useful binaries.
 
-brew install ack
-brew install bat
+# brew install ack
+# brew install bat
 brew install cloc
 brew install diff-so-fancy
 # brew install exiv2
@@ -104,36 +90,35 @@ brew install graphviz
 # brew install gs
 brew install htop
 brew install htop-osx
-brew install httpie
-brew install iftop
+# brew install httpie
+# brew install iftop
 # Disabled because the flag was removed from brew
 #brew install imagemagick --with-webp
-brew install interactive-rebase-tool
-brew install jid
-brew install jo
-brew install jq
+# brew install interactive-rebase-tool
+# brew install jid
+# brew install jo
+# brew install jq
 brew install jvmtop
 brew install lsd
-brew install lua
+# brew install lua
 # brew install lynx
-brew install ncdu
+# brew install ncdu
 brew install openssl
 brew install p7zip
 brew install pbzip2
-brew install pick
-# Parallel Gzip
-brew install pigz
-brew install ponysay
-brew install prettyping
-brew install procs
-brew install pv
+# brew install pick
+# brew install pigz
+# brew install ponysay
+# brew install prettyping
+# brew install procs
+# brew install pv
 brew cask install qlcolorcode
 brew cask install qlmarkdown
 brew cask install qlprettypatch
 brew cask install qlstephen
 brew cask install quicklook-json
 # brew install rename
-brew install ripgrep
+# brew install ripgrep
 brew install rlwrap
 brew install roll
 brew install rsync
@@ -141,7 +126,7 @@ brew install rtmpdump
 brew install ssh-copy-id
 brew install the_silver_searcher
 brew install trash
-brew install tree
+# brew install tree
 brew install unrar
 # brew install vbindiff
 brew install wrk
