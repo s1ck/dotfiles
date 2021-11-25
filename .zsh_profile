@@ -60,7 +60,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(cargo)
+plugins=(cargo gradle-completion)
 
 test -e $ZSH/oh-my-zsh.sh && source $ZSH/oh-my-zsh.sh
 
@@ -71,9 +71,6 @@ setopt auto_cd
 
 # Automatically search in the following dirs when cd is used
 cdpath=($HOME $HOME/Devel $HOME/Devel/Java $HOME/Devel/Rust)
-
-# iterm2 (https://www.iterm2.com/3.3/documentation-scripting-fundamentals.html)
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # FZF
 test -f ~/.fzf.zsh && source ~/.fzf.zsh

@@ -10,23 +10,16 @@ export PYTHONIOENCODING='UTF-8';
 # Don’t clear the screen after quitting a manual page.
 export MANPAGER='less -X';
 
-# Opt-out of Homebrew analytics
-export HOMEBREW_NO_ANALYTICS=1
-
-# Don't automatically update homebrew on every install
-export HOMEBREW_NO_AUTO_UPDATE=1
-
 # http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
 # Use RipGrep for better search
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # SDKMAN
-export SDKMAN_DIR="/Users/s1ck/.sdkman";
+export SDKMAN_DIR="$HOME/.sdkman";
 
-# binutils
-export LDFLAGS="-L/opt/homebrew/opt/binutils/lib -L/opt/homebrew/opt/openssl@3/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/binutils/include -I/opt/homebrew/opt/openssl@3/include"
+# async-profiler
+export ASYNC_PROFILER_DIR="$HOME/Devel/async-profiler";
 
-# GPG MacOS fix
-export GPG_TTY=${tty};
+# Flamegraph
+export FLAMEGRAPH_DIR="$HOME/Devel/FlameGraph";

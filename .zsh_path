@@ -1,27 +1,8 @@
-
-# Add x86_64 bew directories
-PATH="/usr/local/bin:/usr/local/sbin:$PATH";
-
-# Add aarch64 bew directories
-PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH";
-
-# Add x86_64 cargo binaries
-PATH="$HOME/.x86_64/.cargo/bin:$PATH";
-
-# Add aarch64 cargo binaries
+# Add cargo binaries
 PATH="$HOME/.cargo/bin:$PATH"
 
 # Add ~/bin
 PATH="$HOME/bin:$PATH";
-
-# Add Sublime text
-PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
-
-# binutils
-export PATH="/opt/homebrew/opt/binutils/bin:$PATH"
-
-# OpenSSL
-export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 
 export PATH;
 
