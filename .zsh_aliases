@@ -1,3 +1,7 @@
+# Create a new directory and enter it
+# md is a default alias in oh-my-zsh
+unalias md
+
 # Shortcuts
 
 alias h="history"

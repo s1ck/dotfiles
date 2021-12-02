@@ -1,7 +1,3 @@
-# Create a new directory and enter it
-# md is a default alias in oh-my-zsh
-unalias md
-
 function md() {
   mkdir -p "$@" && cd "$_";
 }
