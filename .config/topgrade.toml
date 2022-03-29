@@ -5,7 +5,7 @@
 #]
 
 # Disable specific steps - same options as the command line flag
-disable = ["system", "gem", "node"]
+disable = ["containers", "github_cli_extensions", "system", "gem", "node"]
 
 # Run specific steps - same options as the command line flag
 #only = ["system", "emacs"]
