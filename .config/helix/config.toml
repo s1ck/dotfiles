@@ -1,12 +1,12 @@
 theme = "bogster"
 
+#[lsp]
+#display-messages = true
+
 [editor]
+idle-timeout = 200
 line-number = "relative"
 
 [keys.normal]
 "X" = "extend_line_up"
-"C-w" = "expand_selection"
-"A-ret"= "code_action"
-
-[keys.insert]
-"A-ret" = "code_action"
+"C-v" = "expand_selection"
