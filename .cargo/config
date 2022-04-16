@@ -1,7 +1,0 @@
-[build]
-# rustc-wrapper = "sccache"
-
-[alias]
-br = "build --release"
-rr = "run --release"
-m = "make"
