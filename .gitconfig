@@ -1,6 +1,4 @@
 [alias]
-	# `git dft` is less to type than `git difftool`
-	dft = difftool
 
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
@@ -26,6 +24,9 @@
 
 	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
 	di = "!d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+
+	# `git dt` is less to type than `git difftool`
+	dt = difftool
 
 	# Pull in remote changes for the current repository and all its submodules
 	p = pull --recurse-submodules --autostash --rebase=interactive
