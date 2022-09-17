@@ -1,4 +1,6 @@
 [alias]
+	# `git dft` is less to type than `git difftool`
+	dft = difftool
 
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
@@ -263,10 +265,23 @@
 	# Remove the /a and /b prefixes from the diff view
 	noprefix = true
 
-[diff "bin"]
+	# Use difftastis as diff tool (https://difftastic.wilfred.me.uk/)
+	tool = difftastic
 
+[difftool]
+	# Do not prompt before each invocation of the diff tool.
+	prompt = false
+
+[diff "bin"]
 	# Use `hexdump` to diff binary files
 	textconv = hexdump -v -C
+
+[difftool "difftastic"]
+	cmd = difft "$LOCAL" "$REMOTE"
+
+[pager]
+	# Use a pager for larger outputs
+	difftool = true
 
 [help]
 
