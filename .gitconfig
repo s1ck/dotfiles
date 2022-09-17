@@ -84,7 +84,7 @@
 	amend = commit --amend --reuse-message=HEAD
 
 	# Create a new commit with all changes and the same message as the last commit
-	again = commit -a --reuse-message=HEAD
+	again = commit -a --amend --reuse-message=HEAD
 
 	# Change the commit message of the last commit
 	reword = commit --amend
