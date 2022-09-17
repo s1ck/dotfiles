@@ -223,6 +223,9 @@
 	# Use delta: https://github.com/dandavison/delta#configuration
 	pager = delta
 
+	# Use helix instead of vim (default)
+	editor = hx
+
 [color]
 
 	# Use colors in Git commands that are capable of colored output when
