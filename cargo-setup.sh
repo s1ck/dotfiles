@@ -194,3 +194,5 @@ cargo install xxv --quiet
 # A smarter cd command. Supports all major shells.
 # https://github.com/ajeetdsouza/zoxide
 cargo install zoxide --quiet
+# A structural diff that understands syntax
+cargo install difftastic --quiet
