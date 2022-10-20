@@ -89,7 +89,7 @@ alias ctrlc="tr -d '\n' | pbcopy"
 alias cleanup="find . \( \( -type d -name target \) -or \( -type d -name build \) -or \( -type f -name '*.DS_Store' \) \) -exec rm -r {} \;"
 
 # Update htop more frequently
-alias htop='sudo htop -d 10'
+alias htop='htop -d 10'
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"
