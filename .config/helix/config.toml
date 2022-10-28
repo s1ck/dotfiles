@@ -1,7 +1,4 @@
-theme = "bogster"
-
-#[lsp]
-#display-messages = true
+theme = "penumbra+dark"
 
 [editor]
 idle-timeout = 200
@@ -9,4 +6,12 @@ line-number = "relative"
 
 [keys.normal]
 "X" = "extend_line_up"
-"C-v" = "expand_selection"
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+[editor.indent-guides]
+render = true
+character = "╎"
