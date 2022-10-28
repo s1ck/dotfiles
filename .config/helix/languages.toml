@@ -1,0 +1,15 @@
+[[language]]
+name = "rust"
+language-server = { command = "/home/s1ck/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer" }
+
+# [language.config]
+# workspace = { symbol = { search = { scope = "workspace_and_dependencies" } } }
+# procMacro = { enable = true }
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+'<' = '>'
