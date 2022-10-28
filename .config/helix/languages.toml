@@ -1,0 +1,6 @@
+[[language]]
+name = "rust"
+language-server = { command = "/Users/s1ck/.rustup/toolchains/stable-aarch64-apple-darwin/bin/rust-analyzer" }
+[language.config]
+workspace = { symbol = { search = { kind = "all_symbols", limit = 65536 }}}
+procMacro = { enable = true }

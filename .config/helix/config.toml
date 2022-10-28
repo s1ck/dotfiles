@@ -1,7 +1,11 @@
-theme = "bogster"
+theme = "penumbra+"
 
-#[lsp]
-#display-messages = true
+[keys.insert]
+"A-ret" = "code_action"
+up = "move_line_up"
+down = "move_line_down"
+left = "move_char_left"
+right = "move_char_right"
 
 [editor]
 idle-timeout = 200
@@ -9,4 +13,13 @@ line-number = "relative"
 
 [keys.normal]
 "X" = "extend_line_up"
-"C-v" = "expand_selection"
+"A-ret"= "code_action"
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+[editor.indent-guides]
+render = true
+character = "╎"
