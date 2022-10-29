@@ -1,11 +1,19 @@
 theme = "penumbra+dark"
 
+[keys.insert]
+"A-ret" = "code_action"
+up = "move_line_up"
+down = "move_line_down"
+left = "move_char_left"
+right = "move_char_right"
+
 [editor]
 idle-timeout = 200
 line-number = "relative"
 
 [keys.normal]
 "X" = "extend_line_up"
+"A-ret"= "code_action"
 
 [editor.whitespace.render]
 space = "all"
