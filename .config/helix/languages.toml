@@ -1,6 +1,27 @@
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config]
+inlayHints.bindingModeHints.enable = false
+inlayHints.closingBraceHints.minLines = 10
+inlayHints.closureReturnTypeHints.enable = "with_block"
+inlayHints.discriminantHints.enable = "fieldless"
+inlayHints.lifetimeElisionHints.enable = "skip_trivial"
+inlayHints.typeHints.hideClosureInitialization = false
+workspace.symbol.search.kind = "all_symbols"
+workspace.symbol.search.limit = 65536
+procMacro.enable = true
+diagnostics.experimental.enable = true
+
 [[language]]
 name = "rust"
-language-server = { command = "/Users/s1ck/.rustup/toolchains/stable-aarch64-apple-darwin/bin/rust-analyzer" }
-[language.config]
-workspace = { symbol = { search = { kind = "all_symbols", limit = 65536 }}}
-procMacro = { enable = true }
+language-servers = [ "rust-analyzer" ]
+
+[[language]]
+name = "just"
+scope = "source.just"
+roots = []
+file-types = ["justfile", "just"]
+indent = { tab-width = 2, unit = " " }
+comment-token = "#"
+
