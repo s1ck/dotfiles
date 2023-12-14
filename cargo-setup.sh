@@ -3,10 +3,10 @@
 # Install rustup, only run once
 # curl https://sh.rustup.rs -sSf | sh
 
-rustup component add clippy rustfmt rust-src llvm-tools-preview
+rustup component add clippy rust-analyzer rustfmt rust-src llvm-tools-preview
 
 rustup toolchain install nightly
-rustup component add clippy rustfmt rust-src --toolchain nightly
+rustup component add clippy rustfmt rust-src miri --toolchain nightly
 
 # Terminal bandwidth utilization tool
 # https://github.com/imsnif/bandwhich
@@ -14,12 +14,12 @@ cargo install bandwhich --quiet
 # A cat(1) clone with wings.
 # https://github.com/sharkdp/bat
 cargo install bat --quiet
+# background rust code check
+# https://github.com/Canop/bacon
+cargo install bacon --quiet
 # A new way to see and navigate directory trees
 # https://github.com/Canop/broot
 cargo install broot --quiet
-# Yet another cross-platform graphical process/system monitor.
-# https://github.com/ClementTsang/bottom
-cargo install btm --quiet
 # cargo subcommand showing the assembly or llvm-ir generated for Rust code
 # https://github.com/gnzlbg/cargo-asm
 cargo install cargo-asm --quiet
@@ -32,6 +32,9 @@ cargo install cargo-bloat --quiet
 # LLVM-GCOV Source coverage for Rust
 # https://github.com/kennytm/cov
 cargo install cargo-cov --quiet
+# Execute Rust code carefully, with extra checking along the way
+# https://github.com/RalfJung/cargo-careful
+cargo install cargo-careful --quiet
 # Cargo plugin for linting your dependencies
 # https://github.com/EmbarkStudios/cargo-deny
 cargo install cargo-deny --quiet
@@ -89,6 +92,12 @@ cargo install cargo-whatfeatures --quiet
 # “Zero setup” cross compilation and “cross testing” of Rust crates
 # https://github.com/rust-embedded/cross
 cargo install cross --quiet
+# A syntax-highlighting pager for git, diff, and grep output
+# https://github.com/dandavison/delta
+cargo install delta --quiet
+# a structural diff that understands syntax 🟥🟩
+# https://github.com/Wilfred/difftastic
+cargo install difftastic --quiet
 # Terminal disk space navigator
 # https://github.com/imsnif/diskonaut
 cargo install diskonaut --quiet
@@ -102,17 +111,20 @@ cargo install dua-cli --quiet
 # https://github.com/google/evcxr
 cargo install evcxr_repl --quiet
 # A modern replacement for ‘ls’
-# https://github.com/ogham/exa
-cargo install exa --quiet
+# https://github.com/eza-community/eza
+cargo install eza --quiet
+# A simple, fast and user-friendly alternative to 'find'
+# https://github.com/sharkdp/fd
+cargo install fd --quiet
 # Easy flamegraphs for Rust projects and everything else
 # https://github.com/flamegraph-rs/flamegraph
 cargo install flamegraph --quiet
 # CLI tool to help keep track of your Git repositories
 # https://github.com/nickgerace/gfold
 cargo install gfold --quiet
-# Command line tool to open repository, file, commit, diff, tag, pull request, blame, issue or project's website in browser for various repository hosting services
-# https://github.com/rhysd/git-brws
-cargo install git-brws --quiet
+# Checkout a Github PR with fuzzy selection
+# https://github.com/knutwalker/git-coprs
+cargo install --git https://github.com/knutwalker/git-coprs --quiet
 # A syntax-highlighting pager for git and diff output
 # https://github.com/dandavison/delta
 cargo install git-delta --quiet
@@ -137,18 +149,24 @@ cargo install grcov --quiet
 # A command-line tool and library for generating regular expressions from user-provided test cases
 # https://github.com/pemistahl/grex
 cargo install grex --quiet
+# A post-modern modal text editor.
+# https://github.com/helix-editor/helix
+cargo install helix --quiet
 # A command-line benchmarking tool
 # https://github.com/sharkdp/hyperfine
 cargo install hyperfine --quiet
+# Personalised sdkman frontend specialized for Java
+# https://github.com/knutwalker/jdkman
+cargo install --git https://github.com/knutwalker/jdkman --quiet
+# 🤖 Just a command runner
+# https://github.com/casey/just
+cargo install just --quiet
 # Count lines of code quickly
 # https://github.com/cgag/loc
 cargo install loc --quiet
 # cat for markdown
 # https://github.com/lunaryorn/mdcat
 cargo install mdcat --quiet
-# HTTP load generator
-# https://github.com/hatoo/oha
-cargo install oha --quiet
 # A process viewer GUI in rust
 # https://github.com/GuillaumeGomez/process-viewer
 cargo install process_viewer --quiet
@@ -173,17 +191,8 @@ cargo install so --quiet
 # Graph history of GitHub stars of a user or repo over time
 # https://github.com/dtolnay/star-history
 cargo install star-history --quiet
-# A very fast implementation of tldr in Rust
-# https://github.com/dbrgn/tealdeer
-cargo install tealdeer --quiet
-# Find build artifacts that are taking up disk space
-# https://github.com/vmchale/tin-summer
-cargo install tin-summer --quiet
-# Count your code, quickly
-# https://github.com/XAMPPRocky/tokei
-cargo install tokei --quiet
 # Upgrade everything
-# https://github.com/r-darwish/topgrade
+# https://github.com/topgrade-rs/topgrade
 cargo install topgrade --quiet
 # unix utility for waiting on ports, http status, and more
 # https://github.com/jzelinskie/w8
@@ -194,5 +203,3 @@ cargo install xxv --quiet
 # A smarter cd command. Supports all major shells.
 # https://github.com/ajeetdsouza/zoxide
 cargo install zoxide --quiet
-# A structural diff that understands syntax
-cargo install difftastic --quiet
