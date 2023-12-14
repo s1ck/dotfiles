@@ -6,10 +6,13 @@ unalias md
 
 alias h="history"
 alias vi="hx"
+alias j="just"
+alias jd="j --dry-run"
+alias lg="lazygit"
 
 ## Cargo / Rust
 alias c="cargo"
-alias n="cargo +nightly"
+alias cn="cargo +nightly"
 alias rshell="evcxr"
 
 ## Directories
@@ -32,13 +35,13 @@ alias gut="git"
 alias got="git"
 alias gir="git"
 
-## ls -> exa
-## https://github.com/ogham/exa
+## ls -> eza
+## https://github.com/eza-community/eza
 
-alias ls='exa --classify --icons --group-directories-first --time-style=long-iso'
+alias ls='eza --classify --icons --group-directories-first --time-style=long-iso'
 
 ## List files one line at a time
-alias l1="exa --group-directories-first --oneline"
+alias l1="eza --group-directories-first --oneline"
 
 ### List files in long format, excluding things that are .gitignored
 alias l0="ls --long --git-ignore"
@@ -63,7 +66,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # CATAAS
-alias cataas='curl -so- https://cataas.com/c | imgcat'
+alias cataas='curl -so- https://cataas.com/c | viu -'
 
 # Get week number
 alias week='date +%V'
@@ -96,5 +99,8 @@ alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# Zathura PDF viewer (start in background)
+alias pdf='zathura --fork'
 
 
