@@ -1,3 +1,4 @@
+[misc]
 # Additional git repositories to pull
 #git_repos = [
 #    "~/src/*/",
@@ -5,7 +6,7 @@
 #]
 
 # Disable specific steps - same options as the command line flag
-disable = ["containers", "github_cli_extensions", "system", "gem", "node"]
+disable = ["vscode", "containers", "gem", "github_cli_extensions", "node", "pnpm", "distrobox"]
 
 # Run specific steps - same options as the command line flag
 #only = ["system", "emacs"]
@@ -43,3 +44,5 @@ disable = ["containers", "github_cli_extensions", "system", "gem", "node"]
 
 # Cleanup temporary or old files
 #cleanup = true
+
+#display_preamble = false
