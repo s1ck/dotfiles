@@ -2,7 +2,7 @@
 export EDITOR='hx';
 
 # Except for git (because vim has syntax highlightning ...)
-export GIT_EDITOR='vim -c startinsert';
+export GIT_EDITOR='hx';
 
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8';
@@ -23,3 +23,6 @@ export ASYNC_PROFILER_DIR="$HOME/Devel/async-profiler";
 
 # Flamegraph
 export FLAMEGRAPH_DIR="$HOME/Devel/FlameGraph";
+
+# A colon-separated list of suffixes to ignore when performing filename completion.
+export FIGNORE=argo.lock
