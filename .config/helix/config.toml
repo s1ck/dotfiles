@@ -1,19 +1,17 @@
-theme = "penumbra+dark"
-
-[keys.insert]
-"A-ret" = "code_action"
-up = "move_line_up"
-down = "move_line_down"
-left = "move_char_left"
-right = "move_char_right"
+theme = "tokyonight+dark"
 
 [editor]
-idle-timeout = 200
+true-color = true
+idle-timeout = 280
 line-number = "relative"
+bufferline = "multiple"
 
-[keys.normal]
-"X" = "extend_line_up"
-"A-ret"= "code_action"
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = false
 
 [editor.whitespace.render]
 space = "all"
@@ -23,3 +21,15 @@ newline = "none"
 [editor.indent-guides]
 render = true
 character = "╎"
+
+[keys.normal]
+X = "extend_line_up"
+ret = ["move_line_down", "goto_line_start"]
+
+[keys.normal.g]
+q = ":reflow"
+G = "goto_file_end"
+
+[keys.normal.space]
+q = ":quit"
+# w = ":write"
