@@ -4,5 +4,8 @@ PATH="$HOME/.cargo/bin:$PATH"
 # Add ~/bin
 PATH="$HOME/bin:$PATH";
 
+# Add ~/.local/bin
+PATH="$HOME/.local/bin:$PATH";
+
 export PATH;
 
