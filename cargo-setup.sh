@@ -92,9 +92,6 @@ cargo install cargo-whatfeatures --quiet
 # “Zero setup” cross compilation and “cross testing” of Rust crates
 # https://github.com/rust-embedded/cross
 cargo install cross --quiet
-# A syntax-highlighting pager for git, diff, and grep output
-# https://github.com/dandavison/delta
-cargo install delta --quiet
 # a structural diff that understands syntax 🟥🟩
 # https://github.com/Wilfred/difftastic
 cargo install difftastic --quiet
@@ -119,6 +116,9 @@ cargo install fd --quiet
 # Easy flamegraphs for Rust projects and everything else
 # https://github.com/flamegraph-rs/flamegraph
 cargo install flamegraph --quiet
+# A syntax-highlighting pager for git, diff, and grep output
+# https://github.com/dandavison/delta
+cargo install git-delta --quiet
 # CLI tool to help keep track of your Git repositories
 # https://github.com/nickgerace/gfold
 cargo install gfold --quiet
