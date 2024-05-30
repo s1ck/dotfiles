@@ -99,11 +99,17 @@ nmap <leader>b <Action>(RecentFiles)
 nmap <leader>B <Action>(RecentChangedFiles)
 nmap <leader><cr> :nohlsearch<CR>
 
+nmap <leader>c <Action>(CompileDirty)
+nmap <leader>C <Action>(CompileProject)
+
 nmap <c-o> <Action>(Back)
 nmap <c-i> <Action>(Forward)
 nmap <s-k> <Action>(ExpressionTypeInfo)
 nmap <c-k> <Action>(ShowErrorDescription)
 nmap <s-c-k> <Action>(QuickJavaDoc)
+
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
 
 nmap <leader>uh <Action>(ToggleInlayHintsGloballyAction)
 nmap <leader>uw <Action>(EditorToggleShowWhitespaces)
