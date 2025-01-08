@@ -3,7 +3,7 @@
 let mapleader=" "
 
 " https://github.com/JetBrains/ideavim/wiki/IdeaVim-Plugins
-" set clipboard+=unnamedplus
+set clipboard+=unnamedplus
 "set clipboard+=ideaput
 set ideajoin
 set incsearch
@@ -34,6 +34,9 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 nmap \e :e ~/.ideavimrc<CR>
 nmap \r <Action>(IdeaVim.ReloadVimRc.reload)
+
+" clear selections
+vnoremap ESC :nohl<CR>
 
 nmap <s-u> <Action>($Redo)
 nmap <c-z> <Action>(ToggleDistractionFreeMode)
@@ -87,14 +90,14 @@ nmap <leader>F <Action>(FindInPath)
 nmap <leader>f <Action>(GotoFile)
 nmap <c-f> <Action>(ActivateFindToolWindow)
 nmap <leader>e <Action>(SearchEverywhere)
-nmap <leader>o <Action>(ActivateProjectToolWindow)
+nmap <leader>o <Action>(SelectInProjectView)
 nmap <leader>k <Action>(QuickJavaDoc)
 
 nmap <leader>a <Action>(ShowIntentionActions)
 nmap <leader>p <Action>(PasteMultiple)
 nmap <leader>z <Action>(ChangeIdeScale)
 
-nmap <leader>g <Action>(Vcs.QuickListPopupAction)
+nmap <leader>g <Action>(Generate)
 nmap <leader>b <Action>(RecentFiles)
 nmap <leader>B <Action>(RecentChangedFiles)
 nmap <leader><cr> :nohlsearch<CR>
@@ -110,6 +113,17 @@ nmap <s-c-k> <Action>(QuickJavaDoc)
 
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
+
+" Helix line-wise selection
+nnoremap x V
+xnoremap x j
+nnoremap X V
+xnoremap X k
+" Helix delete single-char under cursor
+nnoremap d x
+" Rebind the default surround.vim mappings
+nmap ms <Plug>DSurround
+unmap ds
 
 nmap <leader>uh <Action>(ToggleInlayHintsGloballyAction)
 nmap <leader>uw <Action>(EditorToggleShowWhitespaces)
